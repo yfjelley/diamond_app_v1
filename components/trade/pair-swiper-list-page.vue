@@ -1,0 +1,246 @@
+<template>
+  <view class="page-news">
+    <scroll-view class="listview" style="flex: 1;" enableBackToTop="true" scroll-y @scrolltolower="loadMore()">
+      <view v-for="(item, index) in dataList" :key="item.id">
+        <swiper-list-item :listItem="item" :width="width" @click="itemClick"></swiper-list-item>
+      </view>
+      <my-empty v-if="isNoData" :text="emptyText" :click-data="nid" @emptyClick="emptyClick" :loadingStatus="loadingStatus" :width="width"></my-empty>
+      <view class="loading-more" v-if="loadingStatus !== 'noMore' && params.page > 1">
+        <uni-load-more :status="loadingStatus" iconType="circle" :contentText="loadingMoreText"></uni-load-more>
+      </view>
+    </scroll-view>
+  </view>
+</template>
+
+<script>
+
+import {mapGetters} from "vuex";
+import {
+  initVueI18n
+} from '@dcloudio/uni-i18n'
+import messages from '../../locale';
+import swiperListItem from './pair-swiper-list-item';
+import {accAdd, accMul, accSub, accDiv} from "../../utils/decimal";
+import {pairList} from "../../api/trade/pair";
+import myEmpty from "../my-empty/my-empty";
+
+const { t } = initVueI18n(messages)
+
+export default {
+  components: {
+    swiperListItem,
+    myEmpty
+  },
+  props: {
+    //  宽度，单位px
+    width: {
+      type: [String, Number],
+      default: '750rpx',
+    },
+    nid: {
+      type: [Number, String],
+      default: ''
+    },
+    loadingMoreText: {
+      type: Object,
+      default: () => {
+        return {
+          contentdown: ' ',
+          contentrefresh: ' ',
+          contentnomore: ' '
+        }
+      }
+    },
+    refreshStatusText: {
+      type: Object,
+      default: () => {
+        return {
+          initial: '',
+          complete: '',
+          pull: '',
+          freed: '',
+        }
+      }
+    }
+  },
+  computed: {
+    ...mapGetters({
+      marketCollect: "marketCollect",
+    }),
+    emptyText() {
+      return this.nid === 0 ? t('common.empty.add') : t('common.empty')
+    }
+  },
+  data() {
+    return {
+      dataList: [],
+      refreshing: false,
+      refreshFlag: false,
+      refreshText: "",
+      refreshIcon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACABAMAAAAxEHz4AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAVUExURUxpcSKtjyOtjyOtkCGujyOujyOtjyVq54MAAAAGdFJOUwCBq1Ms2KeJoRYAAAETSURBVGje7de9DoIwFAXgqrgzKLMOOhMTnZmcndwB4f0fQbHclj+Tnt7E6ZyFpAknHy3hBmMYhmEYhmGgbPbVTlWQtW2TKu5ft5+UioJzV9CmOoCGYAHxhB4QTxBALMEBYgkeEEcYAOIIQ0AMYQSIIYwBOGECwAlTAEqYAVDCHIARFgAYYQmAECaADCYIoLaXFUpwN+T2YoTwCiy4CcD0BdJYhX/LLUAK3Aq2BbVxBUIoIEHuC2SpQPbgA/AFltAEPsJdAL7AEkrkGDvAoOC7dkBGaj4uMFfkTUxOjR3qw8O7HHP8wwqdPgtYwAIWsCBgSlaKgkz7z7TtCh6KggQYyT/G5FP129gZCsMwDMMwDMP8PW8Th/WSXjS8nAAAAABJRU5ErkJggg==",
+      pulling: false,
+      isNoData: true,
+      loadingStatus: "more",
+      params: {
+        coinId: this.nid,
+        page: 1,
+        limit: 100,
+      }
+    }
+  },
+  created() {
+    if (this.nid === 0 && this.marketCollect.size === 0) {
+      this.isNoData = true
+      this.dataList = []
+      this.loadingStatus = "noMore";
+    }
+  },
+  methods: {
+    emptyClick(data) {
+      if (data === 0) {
+        console.log("点击了空状态")
+      }
+    },
+    itemClick(params) {
+      this.$emit("pairItemClick", params)
+    },
+    loadData(refresh) {
+      if (this.nid === 0 && this.marketCollect.size === 0) {
+        this.isNoData = true
+        this.dataList = []
+        this.loadingStatus = "noMore";
+        if (refresh) {
+          this.refreshStatus()
+          uni.stopPullDownRefresh()
+        }
+        return;
+      }
+      if (this.loadingStatus !== "more" && !refresh) {
+        return;
+      }
+      this.loadingStatus = "loading";
+
+      // 如果是自选
+      if (this.nid === 0) {
+        this.params.collect = [...this.marketCollect].join(",")
+      }
+      pairList(this.params)
+        .then(res => {
+          uni.stopPullDownRefresh()
+          this.isNoData = false
+          if (res.code > 0) {
+            this.loadingStatus = "noMore";
+            if (this.dataList.length === 0) {
+              this.isNoData = true;
+            }
+            if (refresh) {
+              this.refreshStatus()
+            }
+            return false
+          }
+          const dataList = res.data;
+          // 请求的值小于每页数量
+          this.isNoData = (dataList.length === 0 && this.dataList.length === 0);
+          this.loadingStatus = "more";
+          if (refresh) {
+            this.dataList = dataList;
+            this.refreshStatus()
+          } else {
+            this.dataList = this.dataList.concat(dataList);
+          }
+          this.params.page++
+          if (dataList.length < this.params.limit) {
+            this.loadingStatus = "noMore";
+          }
+        })
+        .catch(() => {
+            uni.stopPullDownRefresh()
+            this.isNoData = false
+            this.loadingStatus = "noMore";
+            if (this.dataList.length === 0) {
+              this.isNoData = true;
+            }
+            if (refresh) {
+              this.refreshStatus()
+            }
+        })
+    },
+    loadMore(e) {
+      this.loadData();
+    },
+    setItem(obj) {
+      let tradeCoinId = obj.tradeCoinId
+      let coinId = obj.coinId
+      let price = obj.price
+      let amount = obj.amount
+      let len = this.dataList.length
+      for (let i = 0; i < len; i++) {
+        let item = this.dataList[i]
+        if (item.tradeCoin && item.tradeCoin.id === tradeCoinId && item.coin && item.coin.id === coinId) {
+          item.price = price
+          let difference = accSub(price, item.price24)
+          // 计算涨跌幅 涨跌幅=涨跌值/昨收盘*100%
+          item.rate24 = Number(accMul(accDiv(difference, item.price24), 100)).toFixed(2)
+          let total = accMul(amount, price)
+          item.tradeTotal24 = Number(accAdd(total, item.tradeTotal24)).toFixed(item.tradeTotalPrecision)
+          break;
+        }
+      }
+    },
+    clear() {
+      this.dataList.length = 0;
+      this.params.page = 1;
+    },
+    refreshStatus() {
+    },
+    refreshData() {
+      this.refreshing = true;
+      this.refreshText = this.refreshStatusText.initial;
+      this.params.page = 1
+      this.loadData(true);
+    },
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+
+.page-news {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.listview {
+  //position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  /* #ifndef APP-NVUE */
+  display: flex;
+  flex-direction: column;
+  /* #endif */
+  /* #ifndef MP-ALIPAY */
+  flex-direction: column;
+  /* #endif */
+}
+
+.loading-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  color: #2DBD96;
+}
+
+.loading-text {
+  margin-left: 2px;
+  font-size: 16px;
+  color: #2DBD96;
+}
+</style>

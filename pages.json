@@ -1,0 +1,405 @@
+{
+	"pages": [
+		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/home/index",
+			"style": {
+				"navigationBarTitleText": "%common.title%",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false,
+					"background": "#191E29"
+				}
+			}
+		},
+		{
+			"path": "pages/login/index",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": true,
+					"background": "#191E29"
+				}
+			}
+		},
+		{
+			"path": "pages/login/forgot",
+			"style": {
+				"navigationBarTitleText": "忘记密码?",
+				// "navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": true,
+					"background": "#191E29"
+				}
+			}
+		},
+		{
+			"path": "pages/login/register",
+			"style": {
+				"navigationBarTitleText": "注册",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": true,
+					"background": "#191E29"
+				}
+			}
+		},
+		{
+			"path": "pages/market/index",
+			"style": {
+				"navigationBarTitleText": "%common.title%",
+				"navigationStyle": "custom",
+				// #ifndef APP-PLUS
+				"enablePullDownRefresh": true,
+				// #endif
+				"app-plus": {
+					"titleNView": false,
+					"background": "#191E29"
+				}
+			}
+		},
+		{
+			"path": "pages/trade/index",
+			"style": {
+				"navigationBarTitleText": "%common.title%",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true,
+				"app-plus": {
+					"titleNView": false,
+					"background": "#11151F"
+				}
+			}
+		},
+		{
+			"path": "pages/trade/kLine",
+			"style": {
+				"navigationBarTitleText": "%common.title%",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false,
+					"background": "#191E29"
+				}
+			}
+		},
+		{
+			"path": "pages/trade/history",
+			"style": {
+				"navigationBarTitleText": "%common.title%",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true,
+				"app-plus": {
+					"titleNView": false,
+					"background": "#11151F"
+				}
+			}
+		},
+		{
+			"path": "pages/trade/historyDetails",
+			"style": {
+				"navigationBarTitleText": "%trade.order.history.details%",
+				"navigationBarBackgroundColor": "#11151F",
+				"enablePullDownRefresh": true,
+				"app-plus": {
+					"background": "#11151F"
+				}
+			}
+		},
+		{
+			"path": "pages/contract/index",
+			"style": {
+				"navigationBarTitleText": "%common.title%",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false,
+					"background": "#191E29"
+				}
+			}
+		},
+		{
+			"path": "pages/wallet/index",
+			"style": {
+				// "navigationBarTitleText": "%common.title%",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false,
+					"background": "#191E29"
+				}
+			}
+		},
+		{
+			"path": "pages/mine/mine",
+			"style": {
+				"navigationBarTitleText": "%common.title%",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"background": "#11151F"
+				}
+			}
+		},
+		{
+			"path": "pages/mine/info",
+			"style": {
+				"navigationBarTitleText": "个人信息",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"background": "#191E29"
+				}
+			}
+		},
+		{
+			"path": "pages/mine/nickname",
+			"style": {
+				"navigationBarTitleText": "修改昵称",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"background": "#191E29"
+				}
+			}
+		},
+		{
+			"path": "pages/mine/note",
+			"style": {
+				"navigationBarTitleText": "简介",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"background": "#191E29"
+				}
+			}
+		},{
+			"path": "pages/mine/safe",
+			"style": {
+				"navigationBarTitleText": "安全中心",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"background": "#191E29"
+				}
+			}
+		},{
+			"path": "pages/mine/invited",
+			"style": {
+				"navigationBarTitleText": "邀请有奖",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"background": "#191E29"
+				}
+			}
+		},{
+			"path": "pages/mine/setphone",
+			"style": {
+				"navigationBarTitleText": "绑定手机号码",
+				"app-plus": {
+					"background": "#191E29"
+				}
+			}
+		},{
+			"path": "pages/mine/setemail",
+			"style": {
+				"navigationBarTitleText": "更换邮箱",
+				"app-plus": {
+					"background": "#191E29"
+				}
+			}
+		},{
+			"path": "pages/mine/setpassword",
+			"style": {
+				"navigationBarTitleText": "修改密码",
+				"app-plus": {
+					"background": "#191E29"
+				}
+			}
+		},{
+			"path": "pages/mine/lock",
+			"style": {
+				"navigationBarTitleText": "自动锁定",
+				"app-plus": {
+					"background": "#191E29"
+				}
+			}
+		},{
+			"path": "pages/mine/message",
+			"style": {
+				"navigationBarTitleText": "消息中心",
+				"app-plus": {
+					"background": "#191E29"
+				}
+			}
+		},{
+			"path": "pages/mine/msgdetail",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"background": "#191E29"
+				}
+			}
+		}
+	    ,{
+            "path" : "pages/btcdetall/btcdetall",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tactics/tactics",
+            "style" :                                                                                    
+            {
+				"navigationStyle": "custom",
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/addtactics/addtactics",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "添加策略",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/fiexi/fiexi",
+            "style" :                                                                                    
+            {
+				"navigationStyle": "custom",
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/spot/spot",
+            "style" :                                                                                    
+            {
+				"navigationStyle": "custom",
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/agre/agre",
+            "style" :                                                                                    
+            {
+				"navigationStyle": "custom",
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/rechar/rechar",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "充值",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/spotacc/spotacc",
+            "style" :                                                                                    
+            {
+                // "navigationBarTitleText": "现货账户",
+				"navigationStyle": "custom",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/spotamount/spotamount",
+            "style" :                                                                                    
+            {
+				"navigationStyle": "custom",
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/distill/distill",
+            "style" :                                                                                    
+            {
+				"navigationStyle": "custom",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/distilltype/distilltype",
+            "style" :                                                                                    
+            {
+				"navigationStyle": "custom",
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/record/record",
+            "style" :                                                                                    
+            {
+				"navigationStyle": "custom",
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"easycom": {
+	  "autoscan": true,
+	  "custom": {
+	    "lb-tabbar-item": "@/components/lb-tabbar/lb-tabbar-item.vue"
+	  }
+	},
+	"tabBar": {
+		"color": "#7a8593",
+		"selectedColor": "#2DBD96",
+		"borderStyle": "black",
+		"backgroundColor": "#FFFFFF",
+		"list": [{
+				"pagePath": "pages/home/index",
+				"iconPath": "static/tabbar/market.png",
+				"selectedIconPath": "static/tabbar/market-selected.png",
+				"text": "%common.market%"
+			},
+			// {
+			//   "pagePath": "pages/market/index",
+			//   "iconPath": "static/tabbar/market.png",
+			//   "selectedIconPath": "static/tabbar/market-selected.png",
+			//   "text": "%common.market%"
+			// }
+			// ,
+			{
+				"pagePath": "pages/trade/index",
+				"iconPath": "static/tabbar/trade.png",
+				"selectedIconPath": "static/tabbar/trade-selected.png",
+				"text": "%common.trade%"
+			},
+			{
+				"pagePath": "pages/contract/index",
+				"iconPath": "static/tabbar/contract.png",
+				"selectedIconPath": "static/tabbar/contract-selected.png",
+				"text": "%common.contract%"
+			},
+			{
+				"pagePath": "pages/wallet/index",
+				"iconPath": "static/tabbar/wallet.png",
+				"selectedIconPath": "static/tabbar/wallet-selected.png",
+				"text": "%common.wallet%"
+			}
+		]
+	},
+
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {}
+}
