@@ -115,22 +115,11 @@
 	$nav-height: 35px;
 	
 	.my-nav-bar-search-home {
-		padding-top: 5px;
+		box-sizing: border-box;
+		padding:6px 0 ;
 		background-color: #FFFFFF;
 		 box-shadow: 0 5px 10px -5px #908b8b;
 	}
-
-	.uni-nav-bar-text {
-		font-size: 12px;
-	}
-
-	.nav-bar-left {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
-	}
-
 	.nav-bar-right {
 		display: flex;
 		flex-direction: row;
@@ -140,16 +129,13 @@
 
 	.link-container {
 		display: flex;
-		flex-direction: row;
-		flex: 1;
-		justify-content: space-around;
+		align-items: center;
 		/* 靠左对齐 */
-		padding: 0 15px;
-		margin: 7px 30px 7px 0;
+		margin: 7px 30px 7px -10px;
 	}
 
 	.nav-link {
-		font-size: 14px;
+		font-size: 16px;
 		color: #000;
 		/* 文字颜色改为黑色以适应白色背景 */
 		cursor: pointer;
@@ -162,7 +148,7 @@
 		line-height: $nav-height;
 		flex: 1;
 		padding: 0 5px;
-		font-size: 14px;
+		font-size: 16px;
 	}
 
 	.badge-box {
@@ -176,7 +162,7 @@
 	
 	.active{
 		color: orange;
-		font-size: 35rpx;
+		font-size: 16px;
 		font-weight: bold;
 		border-bottom: 2px solid orange;
 	}
