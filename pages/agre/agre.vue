@@ -45,22 +45,21 @@
 				</view>
 			</view>
 		</view>
-		<lb-tabbar v-model="active"
-		  @change="handleChange">
-		  <lb-tabbar-item v-for="item in tabbars"
-		    :key="item.name"
-		    :name="item.name"
-		    :icon="item.icon"
-		    icon-prefix="iconfont">
-		    {{ item.text }}
-		  </lb-tabbar-item>
+		<lb-tabbar v-model="active" @change="handleChange">
+			<lb-tabbar-item v-for="item in tabbars" :key="item.name" :name="item.name" :icon="item.icon"
+				icon-prefix="iconfont">
+				{{ item.text }}
+			</lb-tabbar-item>
 		</lb-tabbar>
 	</view>
 </template>
 
 <script>
 	import myNavBarSearchHome from "../../components/my-nav-bar/my-nav-bar-search-home";
-	import{favorite,getfavorite} from '@/api/other/setting.js'
+	import {
+		favorite,
+		getfavorite
+	} from '@/api/other/setting.js'
 	export default {
 		components: {
 			myNavBarSearchHome
@@ -77,41 +76,40 @@
 				adCurrent: 0,
 				adMode: 'round',
 				riseList: [],
-				favlist:[],
+				favlist: [],
 				active: 'market',
-				tabbars: [
-				  {
-				    name: 'market',
-				    text: '行情',
-				    icon: 'notice',
-					path:'/pages/home/index',
-				    icon: '/static/tabbar/market.png',
-				    iconActive: '/static/tabbar/market-selected.png'
-				  },
-				  {
-				    name: 'trade',
-				    text: '交易',
-				    icon: 'notice',
-					path:'/pages/trade/index',
-				    icon: '/static/tabbar/trade.png',
-				    iconActive: '/static/tabbar/trade-selected.png'
-				  },
-				 {
-				   name: 'contract',
-				   text: '合约',
-				   icon: 'notice',
-				   path:'/pages/contract/index',
-				   icon: '/static/tabbar/contract.png',
-				   iconActive: '/static/tabbar/contract-selected.png'
-				 },
-				 {
-				   name: 'wallet',
-				   text: '资产',
-				   icon: 'notice',
-				   path:'/pages/wallet/index',
-				   icon: '/static/tabbar/wallet.png',
-				   iconActive: '/static/tabbar/wallet-selected-active.png'
-				 },
+				tabbars: [{
+						name: 'market',
+						text: '行情',
+						icon: 'notice',
+						path: '/pages/home/index',
+						icon: '/static/tabbar/market.png',
+						iconActive: '/static/tabbar/market-selected.png'
+					},
+					{
+						name: 'trade',
+						text: '交易',
+						icon: 'notice',
+						path: '/pages/trade/index',
+						icon: '/static/tabbar/trade.png',
+						iconActive: '/static/tabbar/trade-selected.png'
+					},
+					{
+						name: 'contract',
+						text: '合约',
+						icon: 'notice',
+						path: '/pages/contract/index',
+						icon: '/static/tabbar/contract.png',
+						iconActive: '/static/tabbar/contract-selected.png'
+					},
+					{
+						name: 'wallet',
+						text: '资产',
+						icon: 'notice',
+						path: '/pages/wallet/index',
+						icon: '/static/tabbar/wallet.png',
+						iconActive: '/static/tabbar/wallet-selected-active.png'
+					},
 				]
 			}
 		},
@@ -129,49 +127,48 @@
 						})
 						break;
 					case 'trade':
-					uni.reLaunch({
-						url: '/pages/trade/index'
-					})
+						uni.reLaunch({
+							url: '/pages/trade/index'
+						})
 						break;
 					case 'contract':
-					uni.reLaunch({
-						url: '/pages/contract/index'
-					})
+						uni.reLaunch({
+							url: '/pages/contract/index'
+						})
 						break;
 					case 'wallet':
-					uni.reLaunch({
-						url: '/pages/wallet/index'
-					})
+						uni.reLaunch({
+							url: '/pages/wallet/index'
+						})
 						break;
 					default:
 						break;
 				}
 			},
-			getfavoriteList(){
-				getfavorite().then(res=>{
-					this.favlist=res.data||[]
+			getfavoriteList() {
+				getfavorite().then(res => {
+					this.favlist = res.data || []
 				})
 			},
-			setFavorite(i){
-				favorite({"symbol":i.toUpperCase()}).then(res=>{
-					if(res.code==200){
-						this.temp.forEach((item,index)=>{
-							if(item.symbol==i){
-								item['isfav']=1
+			setFavorite(i) {
+				favorite({
+					"symbol": i.toUpperCase()
+				}).then(res => {
+					if (res.code == 200) {
+						this.temp.forEach((item, index) => {
+							if (item.symbol == i) {
+								item['isfav'] = 1
 							}
 						})
 						this.getfavoriteList()
 						uni.showToast({
-							title:'收藏成功'
+							title: '收藏成功'
 						})
 					}
 				})
 			},
 			adChange(e) {
 				this.adCurrent = e.detail.current;
-			},
-			getMore() {
-
 			},
 			openTosearch() {
 				this.issearch = true
@@ -186,37 +183,6 @@
 				uni.navigateTo({
 					url: `/pages/BTCDETAIL/BTCDETAIL?detail=${JSON.stringify(obj)}`
 				})
-			},
-			fomatFloat(num, n) {
-				var f = parseFloat(num);
-				if (isNaN(f)) {
-					return false;
-				}
-				f = Math.round(num * Math.pow(10, n)) / Math.pow(10, n); // n 幂   
-				var s = f.toString();
-				var rs = s.indexOf('.');
-				//判定如果是整数，增加小数点再补0
-				if (rs < 0) {
-					rs = s.length;
-					s += '.';
-				}
-				while (s.length <= rs + n) {
-					s += '0';
-				}
-				return s;
-			},
-			formatNumber(number) {
-				if (number >= 10000) {
-					const quotient = Math.floor(number / 10000);
-					const remainder = number % 10000;
-
-					// 使用toFixed方法将小数部分保留两位小数
-					const formattedNumber = remainder === 0 ? `${quotient}万` :
-						`${quotient}.${(remainder / 1000).toFixed(2).substring(2)}万`;
-					return formattedNumber;
-				} else {
-					return number.toLocaleString();
-				}
 			},
 			init() {
 				let that = this
@@ -247,15 +213,15 @@
 				uni.onSocketMessage(function(res) {
 					if (!JSON.parse(res.data).event) {
 						arr.push({
-							isfav:0,
+							isfav: 0,
 							...JSON.parse(res.data).data
 						})
 						that.temp = that.filterArray(arr, 'symbol')
-						
-						that.temp.forEach(item=>{
-							that.favlist.map(i=>{
-								if(item.symbol.toUpperCase()==i){
-									item.isfav=1
+
+						that.temp.forEach(item => {
+							that.favlist.map(i => {
+								if (item.symbol.toUpperCase() == i) {
+									item.isfav = 1
 								}
 							})
 						})
@@ -394,7 +360,7 @@
 			justify-content: space-between;
 			width: 100%;
 			height: 88rpx;
-			font-size: 12rpx;
+			font-size: 12px;
 			padding: 0 12px;
 			box-sizing: border-box;
 			color: #a7a7a7;

@@ -74,7 +74,6 @@
 				title: this.$t('common.home'),
 				value: 3,
 				temp: [],
-				adCurrent: 0,
 				adMode: 'round',
 				riseList: [],
 				favlist:[],
@@ -170,12 +169,6 @@
 					}
 				})
 			},
-			adChange(e) {
-				this.adCurrent = e.detail.current;
-			},
-			getMore() {
-
-			},
 			openTosearch() {
 				this.issearch = true
 			},
@@ -189,37 +182,6 @@
 				uni.navigateTo({
 					url: `/pages/BTCDETAIL/BTCDETAIL?detail=${JSON.stringify(obj)}`
 				})
-			},
-			fomatFloat(num, n) {
-				var f = parseFloat(num);
-				if (isNaN(f)) {
-					return false;
-				}
-				f = Math.round(num * Math.pow(10, n)) / Math.pow(10, n); // n 幂   
-				var s = f.toString();
-				var rs = s.indexOf('.');
-				//判定如果是整数，增加小数点再补0
-				if (rs < 0) {
-					rs = s.length;
-					s += '.';
-				}
-				while (s.length <= rs + n) {
-					s += '0';
-				}
-				return s;
-			},
-			formatNumber(number) {
-				if (number >= 10000) {
-					const quotient = Math.floor(number / 10000);
-					const remainder = number % 10000;
-
-					// 使用toFixed方法将小数部分保留两位小数
-					const formattedNumber = remainder === 0 ? `${quotient}万` :
-						`${quotient}.${(remainder / 1000).toFixed(2).substring(2)}万`;
-					return formattedNumber;
-				} else {
-					return number.toLocaleString();
-				}
 			},
 			init() {
 				let that = this
@@ -257,7 +219,7 @@
 						
 						
 						that.temp.forEach(item=>{
-							that.favlist.map(i=>{
+							that.favlist.forEach(i=>{
 								if(item.symbol.toUpperCase()==i){
 									item.isfav=1
 								}
@@ -395,7 +357,7 @@
 			justify-content: space-between;
 			width: 100%;
 			height: 88rpx;
-			font-size: 12rpx;
+			font-size: 12px;
 			padding: 0 12px;
 			box-sizing: border-box;
 			color: #a7a7a7;

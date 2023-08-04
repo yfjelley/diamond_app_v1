@@ -18,11 +18,6 @@
 					</swiper>
 				</uni-swiper-dot>
 			</view>
-			<view class="card">
-
-				<view class="card-body">
-				</view>
-			</view>
 			<view class="nav-card">
 				<view class="nav-item" v-for="(item,index) in navlist" :key="index" @click="NAVTo(item)">
 					<image :src="item.icon"></image>
@@ -515,7 +510,7 @@
 			justify-content: space-between;
 			width: 100%;
 			height: 88rpx;
-			font-size: 12rpx;
+			font-size: 12px;
 			padding: 0 12px;
 			box-sizing: border-box;
 			color: #a7a7a7;

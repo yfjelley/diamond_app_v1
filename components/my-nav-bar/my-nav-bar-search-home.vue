@@ -1,6 +1,5 @@
 <template>
-	<view class="my-nav-bar-search-home">
-		<uni-nav-bar fixed color="#000" :border="false" background-color="#FFFFFF" :statusBar="true">
+		<uni-nav-bar class="my-nav-bar-search-home" fixed color="#000" :border="false" background-color="#FFFFFF" :statusBar="true">
 			<block slot="left">
 				<view class="nav-bar-left" @click="asset">
 					<my-avatar :member-info="memberInfo" size="mini"></my-avatar>
@@ -21,7 +20,6 @@
 				</view>
 			</block>
 		</uni-nav-bar>
-	</view>
 </template>
 
 <script>
@@ -92,9 +90,6 @@
 			asset() {
 				navigateTo("mine/mine", "slide-in-left")
 			},
-			scan() {
-
-			},
 			message() {
 				navigateTo("mine/message")
 			},
@@ -116,7 +111,7 @@
 	
 	.my-nav-bar-search-home {
 		box-sizing: border-box;
-		padding:6px 0 ;
+		padding: 0 0 0 6px ;
 		background-color: #FFFFFF;
 		 box-shadow: 0 5px 10px -5px #908b8b;
 	}
