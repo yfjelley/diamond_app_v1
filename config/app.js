@@ -1,4 +1,5 @@
 let API_URL = "";
+let WS_URL = "";
 // 上传文件的地址
 const UPLOAD_URL = "http://up-z2.qiniu.com";
 // 静态url地址
@@ -12,11 +13,14 @@ if (process.env.NODE_ENV === 'development') {
     // 测试
     // API_URL = "http://127.0.0.1:9001";
     API_URL = "http://8.217.204.77/api";
+	WS_URL = "ws://8.217.204.77:9000/ws/ticker/";
 } else {
     // 正式
     API_URL = "http://api.zhuanghuatianjiu.com.cn";
+	WS_URL = "ws://8.217.204.77:9000/ws/ticker/";
 }
 export {
+	WS_URL,
     API_URL,
     UPLOAD_URL,
     STATIC_URL,

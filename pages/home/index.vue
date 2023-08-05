@@ -200,65 +200,23 @@
 					url: `/pages/btcdetall/btcdetall?detail=${JSON.stringify(obj)}`
 				})
 			},
-			fomatFloat(num, n) {
-				var f = parseFloat(num);
-				if (isNaN(f)) {
-					return false;
-				}
-				f = Math.round(num * Math.pow(10, n)) / Math.pow(10, n); // n 幂   
-				var s = f.toString();
-				var rs = s.indexOf('.');
-				//判定如果是整数，增加小数点再补0
-				if (rs < 0) {
-					rs = s.length;
-					s += '.';
-				}
-				while (s.length <= rs + n) {
-					s += '0';
-				}
-				return s;
-			},
-			formatNumber(number) {
-				if (number >= 10000) {
-					const quotient = Math.floor(number / 10000);
-					const remainder = number % 10000;
-
-					// 使用toFixed方法将小数部分保留两位小数
-					const formattedNumber = remainder === 0 ? `${quotient}万` :
-						`${quotient}.${(remainder / 1000).toFixed(2).substring(2)}万`;
-					return formattedNumber;
-				} else {
-					return number.toLocaleString();
-				}
-			},
 			init() {
-				let that = this
-				let arr=[]
 				uni.showLoading()
-				this.socke = uni.connectSocket({
-					url: 'ws://8.217.204.77:9000/ws/ticker/',
-					// method: 'GET'
-				});
-				uni.onSocketOpen(function(res) { // 在连接建立后发送一个订阅消息
-					that.socketStatus = true
-
-					var subscribeMessage = {
-						action: "subscribe",
-						subscriptions: [{
-								group: 'ticker',
-								symbols: ["swap"] // 订阅永续合约的
-							}
-						]
-					};
-
-					that.sendMessage(JSON.stringify(subscribeMessage))
-
-				});
-				uni.onSocketError(function(res) {
-					console.log('WebSocket连接打开失败，请检查！');
-				});
-
-				uni.onSocketMessage(function(res) {
+				let subscribeMessage = {
+					action: "subscribe",
+					subscriptions: [{
+							group: 'ticker',
+							symbols: ["swap"] // 订阅永续合约的
+						}
+					]
+				};
+			   this.$store.state.ws.send(subscribeMessage);
+			   this.getSocketData();
+			},
+			getSocketData(){
+			 const that = this
+			 let arr = []
+			  this.$store.state.ws.on("message", (res) => {
 					if (!JSON.parse(res.data).event) {
 						uni.hideLoading()
 						if (JSON.parse(res.data).data.famliy == 'BTC/USDT') {
@@ -282,17 +240,7 @@
 						})
 						that.temp=that.filterArray(arr,'symbol')
 					}
-
-				});
-			},
-			sendMessage(msg) {
-				if (this.socketStatus) {
-					uni.sendSocketMessage({
-						data: msg
-					})
-				} else {
-					this.socketMsgQueue.push(msg);
-				}
+			  });
 			},
 			filterArray(arr, prop) {
 			  return arr.filter((item, index, array) => {

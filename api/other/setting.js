@@ -44,7 +44,7 @@ export function favorite(data) {
 // 已收藏币对列表
 export function getfavorite() {
     return request({
-       url: "/strategy/favorites",
+       url: "/strategy/favorites/",
         method: "get"
     });
 }

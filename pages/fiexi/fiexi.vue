@@ -58,9 +58,7 @@
 
 <script>
 	import myNavBarSearchHome from "../../components/my-nav-bar/my-nav-bar-search-home";
-	import {
-		getfavorite
-	} from '@/api/other/setting.js'
+	import {getfavorite} from '@/api/other/setting.js'
 	export default {
 		components: {
 			myNavBarSearchHome
@@ -74,10 +72,10 @@
 				title: this.$t('common.home'),
 				value: 2,
 				temp: [],
+				arr:[],
 				adCurrent: 0,
 				adMode: 'round',
 				riseList: [],
-				favlist: [],
 				active: 'market',
 				tabbars: [{
 						name: 'market',
@@ -117,10 +115,9 @@
 		created() {
 			uni.showLoading()
 			this.init()
-			this.getfavoriteList()
 		},
 		beforeDestroy() {
-			this.socke.close()
+			// this.$store.state.ws.doClose()
 		},
 		methods: {
 			handleChange(e) {
@@ -149,11 +146,6 @@
 						break;
 				}
 			},
-			getfavoriteList() {
-				getfavorite().then(res => {
-					this.favlist = res.data || []
-				})
-			},
 			openTosearch() {
 				this.issearch = true
 			},
@@ -169,46 +161,34 @@
 				})
 			},
 			init() {
-				let that = this
-				let arr = []
 				uni.showLoading()
-				this.socke = uni.connectSocket({
-					url: 'ws://8.217.204.77:9000/ws/ticker/',
-					// method: 'GET'
-				});
-				uni.onSocketOpen(function(res) { // 在连接建立后发送一个订阅消息
-					that.socketStatus = true
-
-					var subscribeMessage = {
-						action: "subscribe",
-						subscriptions: [{
-								group: 'ticker',
-								symbols: ["swap"] // 订阅永续合约的
-							},
-							{
-								group: 'ticker',
-								symbols: ["spot"] // 订阅现货的
-							},
-						]
-					};
-
-					that.sendMessage(JSON.stringify(subscribeMessage))
-
-				});
-				uni.onSocketError(function(res) {
-					console.log('WebSocket连接打开失败，请检查！');
-				});
-
-				uni.onSocketMessage(function(res) {
+				let subscribeMessage = {
+					action: "subscribe",
+					subscriptions: [{
+							group: 'ticker',
+							symbols: ["swap"] // 订阅永续合约的
+						},
+						{
+							group: 'ticker',
+							symbols: ["spot"] // 订阅现货的
+						},
+					]
+				};
+			   this.$store.state.ws.send(subscribeMessage);
+			   this.getSocketData();
+			},
+			getSocketData() {
+			  let arr = []
+			  this.$store.state.ws.on("message", (res) => {
+				// console.log(JSON.parse(res.data))
 					if (!JSON.parse(res.data).event) {
 						uni.hideLoading()
 						arr.push({
 							...JSON.parse(res.data).data
 						})
-						that.temp = that.filterArray(arr, 'symbol')
+						this.temp = this.filterArray(arr, 'famliy')
 					}
-
-				});
+			  });
 			},
 			sendMessage(msg) {
 				if (this.socketStatus) {

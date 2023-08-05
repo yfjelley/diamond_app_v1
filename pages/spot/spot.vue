@@ -38,7 +38,7 @@
 							{{item.change24h}}%
 						</view>
 						<view class="deal-icon" @click="setFavorite(item.symbol)">
-							<uni-icons v-if='item.isfav' type="heart" size="15" color="orange"></uni-icons>
+							<uni-icons v-if='item.isfav== 1' type="heart" size="15" color="orange"></uni-icons>
 							<uni-icons v-else type="heart" size="15"></uni-icons>
 						</view>
 					</view>
@@ -120,7 +120,7 @@
 			this.getfavoriteList()
 		},
 		beforeDestroy() {
-			this.socke.close()
+			// this.$store.state.ws.doClose()
 		},
 		methods: {
 			handleChange(e) {
@@ -151,17 +151,24 @@
 			},
 			getfavoriteList(){
 				getfavorite().then(res=>{
-					this.favlist=res.data||[]
+					if(res.code == 200){
+					  this.favlist= res.data
+					}
+					if(res.code == 401){
+					  this.favlist= res.data
+					}
 				})
 			},
 			setFavorite(i){
 				favorite({"symbol":i.toUpperCase()}).then(res=>{
 					if(res.code==200){
+						console.log(this.temp);
 						this.temp.forEach((item,index)=>{
 							if(item.symbol==i){
 								item['isfav']=1
 							}
 						})
+						console.log(this.temp);
 						this.getfavoriteList()
 						uni.showToast({
 							title:'收藏成功'
@@ -184,60 +191,37 @@
 				})
 			},
 			init() {
-				let that = this
-				let arr = []
 				uni.showLoading()
-				this.socke = uni.connectSocket({
-					url: 'ws://8.217.204.77:9000/ws/ticker/',
-					// method: 'GET'
-				});
-				uni.onSocketOpen(function(res) { // 在连接建立后发送一个订阅消息
-					that.socketStatus = true
-
-					var subscribeMessage = {
-						action: "subscribe",
-						subscriptions: [{
+				let subscribeMessage = {
+					action: "subscribe",
+					subscriptions: [{
 							group: 'ticker',
 							symbols: ["swap"] // 订阅永续合约的
-						}]
-					};
-
-					that.sendMessage(JSON.stringify(subscribeMessage))
-
-				});
-				uni.onSocketError(function(res) {
-					console.log('WebSocket连接打开失败，请检查！');
-				});
-
-				uni.onSocketMessage(function(res) {
+						}
+					]
+				};
+			   this.$store.state.ws.send(subscribeMessage);
+			   this.getSocketData();
+			},
+			getSocketData() {
+			  let arr = []
+			  this.$store.state.ws.on("message", (res) => {
+				// console.log(JSON.parse(res.data))
 					if (!JSON.parse(res.data).event) {
+						uni.hideLoading()
 						arr.push({
-							isfav:0,
 							...JSON.parse(res.data).data
 						})
-						that.temp = that.filterArray(arr, 'symbol')
-						
-						
-						that.temp.forEach(item=>{
-							that.favlist.forEach(i=>{
+						this.temp = this.filterArray(arr, 'symbol')
+						this.temp.forEach(item=>{
+							this.favlist.forEach(i=>{
 								if(item.symbol.toUpperCase()==i){
 									item.isfav=1
 								}
 							})
 						})
-						uni.hideLoading()
 					}
-
-				});
-			},
-			sendMessage(msg) {
-				if (this.socketStatus) {
-					uni.sendSocketMessage({
-						data: msg
-					})
-				} else {
-					this.socketMsgQueue.push(msg);
-				}
+			  });
 			},
 			filterArray(arr, prop) {
 				return arr.filter((item, index, array) => {

@@ -184,60 +184,86 @@
 					url: `/pages/BTCDETAIL/BTCDETAIL?detail=${JSON.stringify(obj)}`
 				})
 			},
+			// init() {
+			// 	let that = this
+			// 	let arr = []
+			// 	uni.showLoading()
+			// 	this.socke = uni.connectSocket({
+			// 		url: 'ws://8.217.204.77:9000/ws/ticker/',
+			// 		// method: 'GET'
+			// 	});
+			// 	uni.onSocketOpen(function(res) { // 在连接建立后发送一个订阅消息
+			// 		that.socketStatus = true
+
+			// 		var subscribeMessage = {
+			// 			action: "subscribe",
+			// 			subscriptions: [{
+			// 				group: 'ticker',
+			// 				symbols: ["spot"] // 订阅现货的
+			// 			}, ]
+			// 		};
+
+			// 		that.sendMessage(JSON.stringify(subscribeMessage))
+
+			// 	});
+			// 	uni.onSocketError(function(res) {
+			// 		console.log('WebSocket连接打开失败，请检查！');
+			// 	});
+
+			// 	uni.onSocketMessage(function(res) {
+			// 		if (!JSON.parse(res.data).event) {
+			// 			arr.push({
+			// 				isfav: 0,
+			// 				...JSON.parse(res.data).data
+			// 			})
+			// 			that.temp = that.filterArray(arr, 'symbol')
+
+			// 			that.temp.forEach(item => {
+			// 				that.favlist.map(i => {
+			// 					if (item.symbol.toUpperCase() == i) {
+			// 						item.isfav = 1
+			// 					}
+			// 				})
+			// 			})
+			// 			uni.hideLoading()
+			// 		}
+
+			// 	});
+			// },
+			
 			init() {
-				let that = this
-				let arr = []
 				uni.showLoading()
-				this.socke = uni.connectSocket({
-					url: 'ws://8.217.204.77:9000/ws/ticker/',
-					// method: 'GET'
-				});
-				uni.onSocketOpen(function(res) { // 在连接建立后发送一个订阅消息
-					that.socketStatus = true
-
-					var subscribeMessage = {
-						action: "subscribe",
-						subscriptions: [{
+				let subscribeMessage = {
+					action: "subscribe",
+					subscriptions: [{
 							group: 'ticker',
-							symbols: ["spot"] // 订阅现货的
-						}, ]
-					};
-
-					that.sendMessage(JSON.stringify(subscribeMessage))
-
-				});
-				uni.onSocketError(function(res) {
-					console.log('WebSocket连接打开失败，请检查！');
-				});
-
-				uni.onSocketMessage(function(res) {
+							symbols: ["spot"] // 订阅永续合约的
+						}
+					]
+				};
+			   this.$store.state.ws.send(subscribeMessage);
+			   this.getSocketData();
+			},
+			getSocketData() {
+			  let arr = []
+			  this.$store.state.ws.on("message", (res) => {
+				// console.log(JSON.parse(res.data))
 					if (!JSON.parse(res.data).event) {
+						uni.hideLoading()
 						arr.push({
 							isfav: 0,
 							...JSON.parse(res.data).data
 						})
-						that.temp = that.filterArray(arr, 'symbol')
-
-						that.temp.forEach(item => {
-							that.favlist.map(i => {
-								if (item.symbol.toUpperCase() == i) {
-									item.isfav = 1
+						this.temp = this.filterArray(arr, 'symbol')
+						this.temp.forEach(item=>{
+							this.favlist.forEach(i=>{
+								if(item.symbol.toUpperCase()==i){
+									item.isfav=1
 								}
 							})
 						})
-						uni.hideLoading()
 					}
-
-				});
-			},
-			sendMessage(msg) {
-				if (this.socketStatus) {
-					uni.sendSocketMessage({
-						data: msg
-					})
-				} else {
-					this.socketMsgQueue.push(msg);
-				}
+			  });
 			},
 			filterArray(arr, prop) {
 				return arr.filter((item, index, array) => {
