@@ -40,6 +40,14 @@ export function favorite(data) {
 		 data: data,
     });
 }
+// 取消收藏币对
+export function deletefavorite(data) {
+    return request({
+        url: "/strategy/favorite/",
+        method: "delete",
+		 data: data,
+    });
+}
 
 // 已收藏币对列表
 export function getfavorite() {

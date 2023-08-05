@@ -19,25 +19,26 @@
 					<text>24H涨幅</text>
 				</view>
 				<view class="list">
-					<view class="deal-item" v-for="(item,index) in list" :key="index" @click="todetail(item)">
-						<view class="deal-info">
-							<view class="deal-info-icon">
-								<!-- <image :src="item.icon" mode=""></image> -->
+					<view class="deal-item" v-for="(item,index) in list" :key="index" @click="todetail(item)" v-show="item.isfav == 1">
+							<view class="deal-info">
+								<view class="deal-info-icon">
+									<!-- <image :src="item.icon" mode=""></image> -->
+								</view>
+								<view class="deal-info-text">
+									<view>{{item.famliy}}</view>
+									<view class="text-ccc">{{'￥'+formatNumber(item.vol24h)}}</view>
+								</view>
 							</view>
-							<view class="deal-info-text">
-								<view>{{item.famliy}}</view>
-								<view class="text-ccc">{{'￥'+formatNumber(item.vol24h)}}</view>
+							<view class="deal-price">
+								<view class="text-bold text-red">{{item.bidPrice}}</view>
+								<view class="text-ccc">{{'￥'+fomatFloat(item.bidPrice*7.2,2)}}</view>
 							</view>
-						</view>
-						<view class="deal-price">
-							<view class="text-bold text-red">{{item.bidPrice}}</view>
-							<view class="text-ccc">{{'￥'+fomatFloat(item.bidPrice*7.2,2)}}</view>
-						</view>
-						<view class="deal-type"
-							:class="[Math.sign(item.change24h)==1? 'deal-item-rose':'deal-item-fall']">
-							{{item.change24h}}%
-						</view>
+							<view class="deal-type"
+								:class="[Math.sign(item.change24h)==1? 'deal-item-rose':'deal-item-fall']">
+								{{item.change24h}}%
+							</view>
 					</view>
+					
 				</view>
 				<view class="foot-wrap">
 					<view class="foot-box">
@@ -114,7 +115,14 @@
 		},
 		created() {
 			uni.showLoading()
+			let token = uni.getStorageSync('token')
+			if (!token) {
+				uni.reLaunch({
+					url: '/pages/login/index'
+				})
+			}
 			this.init()
+			this.getfavoriteList()
 		},
 		beforeDestroy() {
 			// this.$store.state.ws.doClose()
@@ -160,6 +168,13 @@
 					url: `/pages/BTCDETAIL/BTCDETAIL?detail=${JSON.stringify(obj)}`
 				})
 			},
+			getfavoriteList(){
+				getfavorite().then(res=>{
+					if(res.code == 200){
+					  this.favlist= res.data
+					}
+				})
+			},
 			init() {
 				uni.showLoading()
 				let subscribeMessage = {
@@ -187,6 +202,13 @@
 							...JSON.parse(res.data).data
 						})
 						this.temp = this.filterArray(arr, 'famliy')
+						this.temp.forEach(item=>{
+							this.favlist.forEach(i=>{
+								if(item.symbol.toUpperCase()==i){
+									item.isfav=1
+								}
+							})
+						})
 					}
 			  });
 			},

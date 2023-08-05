@@ -37,7 +37,7 @@
 							:class="[Math.sign(item.change24h)==1? 'deal-item-rose':'deal-item-fall']">
 							{{item.change24h}}%
 						</view>
-						<view class="deal-icon" @click="setFavorite(item.symbol)">
+						<view class="deal-icon" @click="setFavorite(item)">
 							<uni-icons v-if='item.isfav== 1' type="heart" size="15" color="orange"></uni-icons>
 							<uni-icons v-else type="heart" size="15"></uni-icons>
 						</view>
@@ -60,7 +60,7 @@
 
 <script>
 	import myNavBarSearchHome from "../../components/my-nav-bar/my-nav-bar-search-home";
-	import{favorite,getfavorite} from '@/api/other/setting.js'
+	import{favorite,getfavorite , deletefavorite} from '@/api/other/setting.js'
 	export default {
 		components: {
 			myNavBarSearchHome
@@ -116,6 +116,12 @@
 		},
 		created() {
 			uni.showLoading()
+			let token = uni.getStorageSync('token')
+			if (!token) {
+				uni.reLaunch({
+					url: '/pages/login/index'
+				})
+			}
 			this.init()
 			this.getfavoriteList()
 		},
@@ -154,27 +160,43 @@
 					if(res.code == 200){
 					  this.favlist= res.data
 					}
-					if(res.code == 401){
-					  this.favlist= res.data
-					}
 				})
 			},
 			setFavorite(i){
-				favorite({"symbol":i.toUpperCase()}).then(res=>{
-					if(res.code==200){
-						console.log(this.temp);
-						this.temp.forEach((item,index)=>{
-							if(item.symbol==i){
-								item['isfav']=1
-							}
-						})
-						console.log(this.temp);
-						this.getfavoriteList()
-						uni.showToast({
-							title:'收藏成功'
-						})
-					}
-				})
+				if(i.isfav == 1){
+					deletefavorite({"symbol":i.symbol.toUpperCase()}).then(res=>{
+						if(res.code==200){
+							console.log(this.temp);
+							this.temp.forEach((item,index)=>{
+								if(item.symbol==i){
+									item['isfav']= 0
+								}
+							})
+							console.log(this.temp);
+							this.getfavoriteList()
+							uni.showToast({
+								title:'取消收藏'
+							})
+						}
+					})	
+				}else{
+					favorite({"symbol":i.symbol.toUpperCase()}).then(res=>{
+						if(res.code==200){
+							console.log(this.temp);
+							this.temp.forEach((item,index)=>{
+								if(item.symbol==i){
+									item['isfav']=1
+								}
+							})
+							console.log(this.temp);
+							this.getfavoriteList()
+							uni.showToast({
+								title:'收藏成功'
+							})
+						}
+					})
+				}
+
 			},
 			openTosearch() {
 				this.issearch = true

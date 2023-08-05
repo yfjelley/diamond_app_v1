@@ -238,7 +238,7 @@
 						arr.push({
 							...JSON.parse(res.data).data
 						})
-						that.temp=that.filterArray(arr,'symbol')
+						that.temp=that.filterArray(arr,'famliy')
 					}
 			  });
 			},
