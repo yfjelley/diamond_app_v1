@@ -17,3 +17,20 @@ export function getMineBalance() {
 }
 
 
+// 获取用户个人信息
+export function getUserInfo() {
+    return request({
+        url: "/system/user/info/",
+        method: "get"
+    });
+}
+
+// 修改个人信息
+
+export function setUserInfo(data) {
+    return request({
+        url: "/system/user/update_info/",
+        method: "put",
+		data:data
+    });
+}

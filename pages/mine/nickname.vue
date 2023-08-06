@@ -8,6 +8,7 @@
 </template>
 
 <script>
+	import {setUserInfo} from '@/api/user/member.js'
 	export default {
 		data() {
 			return {
@@ -18,11 +19,17 @@
 			back() {
 				uni.navigateBack()
 			},
-			con() {
-				uni.showToast({
-					title:'你的昵称是'+this.nickname,
-					icon:'none'
-				})
+			async con() {
+				let res=await setUserInfo({nickname:this.nickname})
+				if(res.code){
+					uni.showToast({
+						title:'修改成功',
+						icon:'none'
+					})
+					setTimeout(()=>{
+						uni.navigateBack()
+					},500)
+				}
 			}
 
 		}

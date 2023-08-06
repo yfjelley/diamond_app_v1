@@ -27,6 +27,12 @@
 				</view>
 			</view>
 		</view>
+		<lb-tabbar v-model="active" @change="handleChange">
+			<lb-tabbar-item v-for="item in tabbars" :key="item.name" :name="item.name" :icon="item.icon"
+				icon-prefix="iconfont">
+				{{ item.text }}
+			</lb-tabbar-item>
+		</lb-tabbar>
 	</view>
 </template>
 
@@ -48,28 +54,88 @@
 					{
 						id: '3',
 						text: '现货账户',
-						path:'/pages/spotamount/spotamount'
+						path: '/pages/spotamount/spotamount'
 					}
 				],
+				active: 'wallet',
+				tabbars: [{
+						name: 'market',
+						text: '行情',
+						icon: 'notice',
+						path: '/pages/home/index',
+						icon: '/static/tabbar/market.png',
+						iconActive: '/static/tabbar/market-selected.png'
+					},
+					{
+						name: 'trade',
+						text: '量化',
+						icon: 'notice',
+						path: '/pages/tactics/tactics',
+						icon: '/static/tabbar/trade.png',
+						iconActive: '/static/tabbar/trade-selected.png'
+					},
+					{
+						name: 'contract',
+						text: '教程',
+						icon: 'notice',
+						path: '/pages/tuto/tuto',
+						icon: '/static/tabbar/contract.png',
+						iconActive: '/static/tabbar/contract-selected.png'
+					},
+					{
+						name: 'wallet',
+						text: '资产',
+						icon: 'notice',
+						path: '/pages/wallet/index',
+						icon: '/static/tabbar/wallet.png',
+						iconActive: '/static/tabbar/wallet-selected-active.png'
+					},
+				]
 			}
 		},
 		methods: {
-			to(item) {
-				this.cur = item.id
-				uni.reLaunch({
-					url: item.path
-				})
-			}
-		},
-		onLoad() {
-			let token = uni.getStorageSync('token')
-			if (!token) {
-				uni.reLaunch({
-					url: '/pages/login/index'
-				})
-			}
-		},
-	}
+			handleChange(e) {
+				switch (e.name) {
+					case 'market':
+						uni.reLaunch({
+							url: '/pages/home/index'
+						})
+						break;
+					case 'trade':
+						uni.reLaunch({
+							url: '/pages/tactics/tactics'
+						})
+						break;
+					case 'contract':
+						uni.reLaunch({
+							url: '/pages/tuto/tuto'
+						})
+						break;
+					case 'wallet':
+						uni.reLaunch({
+							url: '/pages/wallet/index'
+						})
+						break;
+					default:
+						break;
+						}
+				},
+				to(item) {
+					this.cur = item.id
+					uni.reLaunch({
+						url: item.path
+					})
+				}
+			},
+			onLoad() {
+				let token = uni.getStorageSync('token')
+				if (!token) {
+					uni.reLaunch({
+						url: '/pages/login/index'
+					})
+				}
+			},
+		}
 </script>
 
 <style lang="scss">
@@ -122,15 +188,18 @@
 					flex-direction: column;
 					height: 70%;
 					justify-content: space-between;
-					.info{
+
+					.info {
 						display: flex;
 						align-items: center;
-						.name{
+
+						.name {
 							margin-right: 12rpx;
 						}
 					}
-					.info2{
-						.text-bold{
+
+					.info2 {
+						.text-bold {
 							font-size: 40rpx;
 							font-weight: bold;
 							margin-right: 12rpx;
@@ -144,6 +213,7 @@
 					top: 24rpx;
 					flex: 0 0 40%;
 					height: 100%;
+
 					.info {
 						display: flex;
 						align-items: center;
@@ -153,6 +223,7 @@
 						background-color: #fff3e4;
 						color: orange;
 						border-radius: 12rpx;
+
 						image {
 							width: 70rpx;
 							height: 70rpx;

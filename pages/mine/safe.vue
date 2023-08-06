@@ -72,11 +72,12 @@
 <style scoped>
 	.note {
 		width: 100%;
-		height: 55rpx;
+		height: 75rpx;
 		padding: 0 48rpx;
 		box-sizing: border-box;
-		line-height: 55rpx;
+		line-height: 75rpx;
 		color: orangered;
+		font-size: 24rpx;
 		background-color: #fff0d6;
 	}
 </style>

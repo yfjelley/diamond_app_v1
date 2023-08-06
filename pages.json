@@ -26,7 +26,7 @@
 		{
 			"path": "pages/login/forgot",
 			"style": {
-				"navigationBarTitleText": "忘记密码?",
+				"navigationBarTitleText": "找回密码?",
 				// "navigationStyle": "custom",
 				"app-plus": {
 					"titleNView": true,
@@ -295,7 +295,7 @@
             "path" : "pages/rechar/rechar",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "充值",
+				"navigationStyle": "custom",
                 "enablePullDownRefresh": false
             }
             
@@ -349,6 +349,133 @@
             }
             
         }
+        ,{
+            "path" : "pages/tuto/tuto",
+            "style" :                                                                                    
+            {
+				"navigationStyle": "custom",
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/selectCoin/selectCoin",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "选择币种",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/recorddetail/recorddetail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tutodetail/tutodetail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "教程",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tacticsdetail/tacticsdetail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的策略",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/rankdetail/rankdetail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "策略详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/homedetail/homedetail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "主页",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/addtacticsspot/addtacticsspot",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        },
+		{
+		    "path" : "pages/reviseone/reviseone",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "修改参数",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
+        ,{
+            "path" : "pages/revisetwo/revisetwo",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "修改参数",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/checkone/checkone",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "查看参数",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/checktwo/checktwo",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "查看参数",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/anewaddtactics/anewaddtactics",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "重开策略",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/anewaddtacticsspot/anewaddtacticsspot",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "重开策略",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"easycom": {
 	  "autoscan": true,
@@ -367,21 +494,14 @@
 				"selectedIconPath": "static/tabbar/market-selected.png",
 				"text": "%common.market%"
 			},
-			// {
-			//   "pagePath": "pages/market/index",
-			//   "iconPath": "static/tabbar/market.png",
-			//   "selectedIconPath": "static/tabbar/market-selected.png",
-			//   "text": "%common.market%"
-			// }
-			// ,
 			{
-				"pagePath": "pages/trade/index",
+				"pagePath": "pages/tactics/tactics",
 				"iconPath": "static/tabbar/trade.png",
 				"selectedIconPath": "static/tabbar/trade-selected.png",
 				"text": "%common.trade%"
 			},
 			{
-				"pagePath": "pages/contract/index",
+				"pagePath": "pages/tuto/tuto",
 				"iconPath": "static/tabbar/contract.png",
 				"selectedIconPath": "static/tabbar/contract-selected.png",
 				"text": "%common.contract%"

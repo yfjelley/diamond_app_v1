@@ -56,12 +56,15 @@
 				})
 			},
 			getMessage(){
+				uni.showLoading()
 				if(this.curselectId=='1'){ // 系统公告
 					getAppinfo().then(res=>{
+						uni.hideLoading()
 						this.msgList=res.data.results
 					})
 				}else{ // 个人消息
 					getMineinfo().then(res=>{
+						uni.hideLoading()
 						this.msgList=res.data.results
 					})
 				}
@@ -83,7 +86,7 @@
 	}
 	.select-card {
 		position: fixed;
-		top: 87rpx;
+		top: 80rpx;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -91,7 +94,7 @@
 		height: 49px;
 		background-color: #ffffff;
 		padding: 2px 0;
-
+		z-index: 9999;
 		.select-item {
 			flex: 0 0 50%;
 			display: flex;
@@ -125,7 +128,7 @@
 			.msg-item-box{
 				padding: 24rpx;
 				width: 100%;
-				height: 100%;
+				height: fit-content;
 				box-sizing: border-box;
 				border-radius: 24rpx;
 				background-color: #fff;

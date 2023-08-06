@@ -18,9 +18,9 @@
 			v-if="!webviewHide && (iconType==='circle' || iconType==='auto' && platform === 'android') && status === 'loading' && showIcon"
 			:style="{width:iconSize+'px',height:iconSize+'px'}"
 			class="uni-load-more__img uni-load-more__img--android-MP">
-			<view :style="{borderTopColor:color,borderTopWidth:iconSize/12}"></view>
-			<view :style="{borderTopColor:color,borderTopWidth:iconSize/12}"></view>
-			<view :style="{borderTopColor:color,borderTopWidth:iconSize/12}"></view>
+			<view class="uni-load-more__img-icon" :style="{borderTopColor:color,borderTopWidth:iconSize/12}"></view>
+			<view class="uni-load-more__img-icon" :style="{borderTopColor:color,borderTopWidth:iconSize/12}"></view>
+			<view class="uni-load-more__img-icon" :style="{borderTopColor:color,borderTopWidth:iconSize/12}"></view>
 		</view>
 		<!-- #endif -->
 		<!-- #ifndef APP-NVUE -->
@@ -29,7 +29,7 @@
 			<image :src="imgBase64" mode="widthFix"></image>
 		</view>
 		<!-- #endif -->
-		<text class="uni-load-more__text"
+		<text v-if="showText" class="uni-load-more__text"
 			:style="{color: color}">{{ status === 'more' ? contentdownText : status === 'loading' ? contentrefreshText : contentnomoreText }}</text>
 	</view>
 </template>
@@ -100,6 +100,10 @@
 						contentnomore: ''
 					}
 				}
+			},
+			showText: {
+				type: Boolean,
+				default: true
 			}
 		},
 		data() {
@@ -114,13 +118,13 @@
 				return (Math.floor(this.iconSize / 24) || 1) * 2
 			},
 			contentdownText() {
-				return this.contentText.contentdown
+				return this.contentText.contentdown || t("uni-load-more.contentdown")
 			},
 			contentrefreshText() {
-				return this.contentText.contentrefresh
+				return this.contentText.contentrefresh || t("uni-load-more.contentrefresh")
 			},
 			contentnomoreText() {
-				return this.contentText.contentnomore
+				return this.contentText.contentnomore || t("uni-load-more.contentnomore")
 			}
 		},
 		mounted() {
@@ -148,7 +152,7 @@
 	}
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 	.uni-load-more {
 		/* #ifndef APP-NVUE */
 		display: flex;
@@ -161,12 +165,13 @@
 
 	.uni-load-more__text {
 		font-size: 14px;
+		margin-left: 8px;
 	}
 
 	.uni-load-more__img {
 		width: 24px;
 		height: 24px;
-		margin-right: 8px;
+		// margin-right: 8px;
 	}
 
 	.uni-load-more__img--nvue {
@@ -200,7 +205,7 @@
 		animation: loading-ios-H5 1s 0s step-end infinite;
 	}
 
-	.uni-load-more__img--ios-H5>image {
+	.uni-load-more__img--ios-H5 image {
 		position: absolute;
 		width: 100%;
 		height: 100%;
@@ -270,7 +275,7 @@
 		transform-origin: center center;
 	}
 
-	.uni-load-more__img--android-H5>circle {
+	.uni-load-more__img--android-H5 circle {
 		display: inline-block;
 		animation: loading-android-H5-dash 1.5s ease-in-out infinite;
 		stroke: currentColor;
@@ -315,7 +320,7 @@
 		animation: loading-ios 1s 0s ease infinite;
 	}
 
-	.uni-load-more__img--android-MP>view {
+	.uni-load-more__img--android-MP .uni-load-more__img-icon {
 		position: absolute;
 		box-sizing: border-box;
 		width: 100%;
@@ -326,15 +331,15 @@
 		transform-origin: center;
 	}
 
-	.uni-load-more__img--android-MP>view:nth-child(1) {
+	.uni-load-more__img--android-MP .uni-load-more__img-icon:nth-child(1) {
 		animation: loading-android-MP-1 1s 0s linear infinite;
 	}
 
-	.uni-load-more__img--android-MP>view:nth-child(2) {
+	.uni-load-more__img--android-MP .uni-load-more__img-icon:nth-child(2) {
 		animation: loading-android-MP-2 1s 0s linear infinite;
 	}
 
-	.uni-load-more__img--android-MP>view:nth-child(3) {
+	.uni-load-more__img--android-MP .uni-load-more__img-icon:nth-child(3) {
 		animation: loading-android-MP-3 1s 0s linear infinite;
 	}
 

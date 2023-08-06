@@ -14,27 +14,18 @@
 						</view>
 						<text>账户资产(USDT)</text>
 					</view>
-					<uni-icons type="eye" size="18" color="#fff"></uni-icons>
+					<uni-icons type="eye" size="18" color="#fff" @click="setyc"></uni-icons>
 				</view>
 				<view class="con">
-					<text class="text-bold">{{balance}}</text>
-					<text>0.0</text>
+					<text class="text-bold">
+						<text v-if="!isyc">{{balance}}</text>
+						<text v-else>**</text>
+					</text>
+					<text>
+						<text v-if="!isyc">0.0</text>
+						<text v-else>**</text>
+					</text>
 				</view>
-				<!-- <view class="foot">
-					<view class="left">
-						<view>昨日返佣(USDT)</view>
-						<view>0.00000</view>
-					</view>
-					<view class="right">
-						<view class="info">
-							<view>昨日返佣(USDT)</view>
-							<view>0.00000</view>
-						</view>
-						<view class="tip">
-							<uni-icons type="right" size="15" color="#fff"></uni-icons>
-						</view>
-					</view>
-				</view> -->
 			</view>
 			<view class="tablist">
 				<view class="item" v-for="(item,index) in tablist" :key="index" @click="toaction(item)">
@@ -83,6 +74,7 @@
 			return {
 				cur:'1',
 				balance:'',
+				isyc:false,
 				navlist:[
 					{
 						id:'1',
@@ -121,6 +113,7 @@
 					{
 						id:'4',
 						text:'账单',
+						path:'/pages/record/record',
 						icon:'https://wp.lhtools.live/view.php/77d2230cd7206bd2c9b69d2653ac4be2.png'
 					}
 				]
@@ -136,6 +129,13 @@
 			this.getMinebalInfo()
 		},
 		methods: {
+			setyc(){
+				if(this.isyc){
+					this.isyc=false
+				}else{
+					this.isyc=true
+				}
+			},
 			async getMinebalInfo(){
 				let res=await getMineBalance()
 				const {diamond_free}=res.data
@@ -161,12 +161,15 @@
 		height: 100vh;
 		background-color: #f3f3f3;
 		.navlist{
+			position: sticky;
+			top: 0;
 			display: flex;
 			align-items: center;
 			width: 100%;
 			padding: 0 12rpx;
 			box-sizing: border-box;
 			height: 88rpx;
+			background-color: #fff;
 			.item{
 				flex: 0 0 20%;
 				font-size: 30rpx;
@@ -188,7 +191,7 @@
 			margin-bottom: 24rpx;
 			.content{
 				width: 100%;
-				height: 300rpx;
+				height: 235rpx;
 				padding: 24rpx;
 				box-sizing: border-box;
 				border-radius: 20rpx;

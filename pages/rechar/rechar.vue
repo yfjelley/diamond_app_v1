@@ -1,47 +1,50 @@
 <template>
-	<view class="container">
-		<view class="title">
-			充值
-		</view>
-		<uv-cell title="USDT" is-link></uv-cell>
-		<view class="name">
-			链名称
-		</view>
-		<view class="tolist">
-			<view class="item" :class="[cur==item.value? 'active':'']" v-for="(item,index) in tolist" :key="index"
-				@click="to(item.value)">
-				{{item.text}}
+	<view>
+		<uni-nav-bar left-icon="left" title="充值" right-icon="cart" @clickLeft='back' @clickRight='toRecord' />
+		<view class="container">
+			<view class="title">
+				充值
 			</view>
-		</view>
-
-		<view class="content">
-			<view class="qrcode">
-				<view class="canvas">
-					<!-- 二维码插件 width height设置宽高 -->
-					<canvas canvas-id="qrcode" :style="{width: `${qrcodeSize}px`, height: `${qrcodeSize}px`}" />
-					<!-- <image :src="this.qrcode" mode=""></image> -->
+			<uv-cell title="USDT" is-link></uv-cell>
+			<view class="name">
+				链名称
+			</view>
+			<view class="tolist">
+				<view class="item" :class="[cur==item.value? 'active':'']" v-for="(item,index) in tolist" :key="index"
+					@click="to(item.value)">
+					{{item.text}}
 				</view>
 			</view>
-			<view class="action">
+		
+			<view class="content">
+				<view class="qrcode">
+					<view class="canvas">
+						<!-- 二维码插件 width height设置宽高 -->
+						<canvas canvas-id="qrcode" :style="{width: `${qrcodeSize}px`, height: `${qrcodeSize}px`}" />
+						<!-- <image :src="this.qrcode" mode=""></image> -->
+					</view>
+				</view>
+				<view class="action">
+					<view class="tip">
+						充币地址
+					</view>
+					<text class="text coinaddress" selectable="true">{{qrcodeText}}</text>
+					<view class="copy" @click="copy">
+						复制地址
+					</view>
+				</view>
+			</view>
+		
+			<view class="footer">
+				<view class="tip red">
+					你的资产将转入对应的交易所钱包，并由交易所进行保管
+				</view>
 				<view class="tip">
-					充币地址
+					请勿向上述地址充值任何非USDT资产，否则资产将不可找回
 				</view>
-				<text class="text" selectable="true">{{qrcodeText}}</text>
-				<view class="copy" @click="copy">
-					复制地址
+				<view class="tip">
+					最小可充值数量:10.0USDT，小于最小金额将无法到账。
 				</view>
-			</view>
-		</view>
-
-		<view class="footer">
-			<view class="tip red">
-				你的资产将转入对应的交易所钱包，并由交易所进行保管
-			</view>
-			<view class="tip">
-				请勿向上述地址充值任何非USDT资产，否则资产将不可找回
-			</view>
-			<view class="tip">
-				最小可充值数量:10.0USDT，小于最小金额将无法到账。
 			</view>
 		</view>
 	</view>
@@ -109,6 +112,14 @@
 						})
 					}
 				});
+			},
+			toRecord(){
+				uni.navigateTo({
+					url:'/pages/record/record'
+				})
+			},
+			back(){
+				uni.navigateBack()
 			},
 			make(value) {
 				let that=this
@@ -183,7 +194,7 @@
 			margin-top: 24rpx;
 			margin-bottom: 24rpx;
 			width: 100%;
-			height: 550rpx;
+			height: 624rpx;
 			padding: 48rpx;
 			background-color: #f3f3f3;
 			box-sizing: border-box;
@@ -212,6 +223,12 @@
 
 				.text {
 					margin-bottom: 24rpx;
+				}
+				.coinaddress{
+					width: 375rpx;
+					height: 90rpx;
+					text-align: center;
+					word-wrap:break-word;
 				}
 
 				.copy {

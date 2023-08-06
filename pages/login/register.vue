@@ -1,57 +1,57 @@
 <template>
-	<view class="content">
-		<view class="login" @click="login">
-			登录
-		</view>
-
-		<view class="header">
-			<image src="/static/login/logo.png"></image>
-
-		</view>
-		<view class="login-title">
-			注册JGZ
-		</view>
-
-		<view class="select-card">
-			<view class="select-item" :class="[curselectId==1? 'select-item-active':'']" @click="selecttype('1')">
-				手机号码注册
+	<view>
+		<uni-nav-bar left-icon="left" right-text="登录" @clickLeft='back' color="orange" @clickRight='login' />
+		<view class="content">
+		
+			<view class="header">
+				<image src="/static/login/logo.png"></image>
+		
 			</view>
-			<view class="select-item" :class="[curselectId==2? 'select-item-active':'']" @click="selecttype('2')">
-				邮箱注册
+			<view class="login-title">
+				注册JGZ
 			</view>
+		
+			<view class="select-card">
+				<view class="select-item" :class="[curselectId==1? 'select-item-active':'']" @click="selecttype('1')">
+					手机号码注册
+				</view>
+				<view class="select-item" :class="[curselectId==2? 'select-item-active':'']" @click="selecttype('2')">
+					邮箱注册
+				</view>
+			</view>
+		
+			<view class="list">
+				<view class="list-call">
+					<image class="img" src="/static/login/phone.png"></image>
+					<input class="biaoti" v-if="curselectId==1" v-model="phone" type="text" maxlength="11"
+						placeholder="输入手机号" />
+					<input class="biaoti" v-else v-model="email" type="text" placeholder="输入邮箱" />
+				</view>
+				<view class="list-call">
+					<image class="img" src="/static/login//block.png"></image>
+					<input class="biaoti" v-model="password" type="password"  placeholder="输入密码" />
+				</view>
+				<view class="list-call">
+					<image class="img" src="/static/login//duihao.png"></image>
+					<input class="biaoti" v-model="inviteCode" type="text" maxlength="11" placeholder="输入邀请码" />
+				</view>
+				<view class="list-call">
+					<image class="img" src="/static/login/ty1.png"></image>
+					<input class="biaoti" v-if="curselectId==1" v-model="sms_code" type="text" placeholder="输入验证码" />
+					<input class="biaoti" v-else v-model="verification_code" type="text" placeholder="输入验证码" />
+					<button class="button-code" @click="GetCode">{{BtnTest ===0?'获取验证码' :BtnTest }}</button>
+				</view>
+			</view>
+		
+			<view class="dlbutton" hover-class="dlbutton-hover">
+				<text @click="Submit">下一步</text>
+			</view>
+		
+			<view class="foot">
+				注册即代表阅读并同意用户协议 <text class="text">《用户协议》</text>和 <text class="text">《隐私条款》</text>
+			</view>
+		
 		</view>
-
-		<view class="list">
-			<view class="list-call">
-				<image class="img" src="/static/login/phone.png"></image>
-				<input class="biaoti" v-if="curselectId==1" v-model="phone" type="text" maxlength="11"
-					placeholder="输入手机号" />
-				<input class="biaoti" v-else v-model="email" type="text" placeholder="输入邮箱" />
-			</view>
-			<view class="list-call">
-				<image class="img" src="/static/login//block.png"></image>
-				<input class="biaoti" v-model="password" type="password"  placeholder="输入密码" />
-			</view>
-			<view class="list-call">
-				<image class="img" src="/static/login//duihao.png"></image>
-				<input class="biaoti" v-model="inviteCode" type="text" maxlength="11" placeholder="输入邀请码" />
-			</view>
-			<view class="list-call">
-				<image class="img" src="/static/login/ty1.png"></image>
-				<input class="biaoti" v-if="curselectId==1" v-model="sms_code" type="text" placeholder="输入验证码" />
-				<input class="biaoti" v-else v-model="verification_code" type="text" placeholder="输入验证码" />
-				<button class="button-code" @click="GetCode">{{BtnTest ===0?'获取验证码' :BtnTest }}</button>
-			</view>
-		</view>
-
-		<view class="dlbutton" hover-class="dlbutton-hover">
-			<text @click="Submit">下一步</text>
-		</view>
-
-		<view class="foot">
-			注册即代表阅读并同意用户协议 <text class="text">《用户协议》</text>和 <text class="text">《隐私条款》</text>
-		</view>
-
 	</view>
 </template>
 
@@ -92,6 +92,9 @@
 				uni.navigateTo({
 					url: '/pages/login/forgot'
 				})
+			},
+			back() {
+				uni.navigateBack()
 			},
 			async Submit() {
 				let data = null

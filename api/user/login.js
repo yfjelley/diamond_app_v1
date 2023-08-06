@@ -45,3 +45,11 @@ export function change_password(data) {
     });
 }
 
+// 忘记密码
+export function forgotpass(data) {
+    return request({
+        url: "/system/reset_password/",
+        method: "put",
+		data:data
+    });
+}

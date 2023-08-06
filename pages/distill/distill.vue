@@ -19,40 +19,10 @@
 </template>
 
 <script>
-	import uQRCode from '@/utils/uqrcode.js'
-	import {rechar} from '@/api/other/setting.js'
 	export default {
 		data() {
 			return {
 				cur: 'USDT',
-				qrcode:'',
-				tolist: [{
-						id: '1',
-						text: 'TRC20',
-						value:'USDT'
-
-					},
-					{
-						id: '3',
-						text: 'ERC20',
-						value:'TRX'
-					}
-				],
-				// 二维码标识串
-				qrcodeText: '',
-				// 二维码尺寸
-				qrcodeSize: 136,
-
-				// 最终生成的二维码图片
-				qrcodeSrc: '',
-
-
-				myFormatData: {
-					'yyh': 'eoruw20230528',
-					'bsdmc': '窗口1',
-					'Yylxmc': '租金缴纳',
-					'yyrq': '预约日期'
-				},
 			}
 		},
 		onLoad() {
@@ -61,8 +31,6 @@
 				uni.reLaunch({
 					url: '/pages/login/index'
 				})
-			}else{
-				this.make('USDT') // 默认为USDT
 			}
 		},
 		methods: {
@@ -78,47 +46,7 @@
 				uni.navigateTo({
 					url:'/pages/distilltype/distilltype'
 				})
-			},
-			to(value) {
-				this.cur = value
-				this.make(value)
-			},
-			copy() {
-				let that=this
-				uni.setClipboardData({
-					data: that.qrcodeText, //要被复制的内容
-					success: () => { //复制成功的回调函数
-						uni.showToast({ //提示
-							title: '复制成功'
-						})
-					}
-				});
-			},
-			make(value) {
-				let that=this
-				uni.showLoading({
-					title: '二维码生成中',
-					mask: true
-				})
-				rechar({ccy:value}).then(res=>{
-					if(res.code==200){
-						uni.hideLoading()
-						this.qrcodeText=res.data.address
-						uQRCode.make({
-							canvasId: 'qrcode',
-							text: res.data.address,
-							size: that.qrcodeSize,
-							margin: 10,
-							success: res => {
-								that.qrcodeSrc = res
-							},
-							complete: () => {
-								uni.hideLoading()
-							}
-						})
-					}
-				})
-			},
+			}
 		}
 	}
 </script>

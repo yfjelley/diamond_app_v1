@@ -60,13 +60,37 @@
 				})
 			},
 			async Submit() {
+				console.log(this.phone,this.sms_code);
 				const res=await checkPhone({phone:this.phone,sms_code:this.sms_code})
 				if(res.code==200){
 					uni.showToast({
-						title:'绑定成功'
+						title:'绑定成功',
+						icon:'none'
 					})
 					uni.navigateBack()
+				}else{
+					uni.showToast({
+						title:res.msg,
+						icon:'none'
+					})
 				}
+			},
+			GetCode() {
+				if (!this.phone) return uni.showToast({
+					title: '请输入手机号',
+					icon: 'none'
+				})
+				this.sms_code = '8888'
+				if (this.codeTimer) return
+				this.BtnTest = 60
+				this.codeTimer = setInterval(() => {
+					--this.BtnTest
+					if(this.BtnTest<0){
+						this.BtnTest=0
+						clearInterval(this.codeTimer)
+						this.codeTimer=null
+					}
+				}, 1000)
 			}
 		},
 		destroyed() {

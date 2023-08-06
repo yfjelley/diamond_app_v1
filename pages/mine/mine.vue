@@ -6,10 +6,10 @@
 				<my-avatar :member-info="memberInfo" size="big"></my-avatar>
 				<view class="mine-user">
 					<text
-						class="mine-username">{{user? user : '请登录'}}</text>
+						class="mine-username">{{userinfo.username? userinfo.nickname || '未知用户' : '请登录'}}</text>
 					<view class="mine-uid-box">
 						<template v-if="user">
-							<text class="mine-uid">UID: {{user}}</text>
+							<text class="mine-uid">UID: {{userinfo.id}}</text>
 							<uni-icons class="mine-icon" custom-prefix="custom-icon" type="compose" color="#c1cdde"
 								size="12"></uni-icons>
 						</template>
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+	import {getUserInfo} from '@/api/user/member.js'
 	import myCard from "../../components/my-card/index"
 	import myCardItem from "../../components/my-card/item"
 	import myAvatar from "../../components/my-avatar/index"
@@ -72,6 +73,7 @@
 			return {
 				storageSize: '',
 				user:'',
+				userinfo:'',
 				isShowInit: false, // 是否在页面显示的时候重新加载
 			}
 		},
@@ -89,8 +91,14 @@
 				this.isShowInit = false
 				this.init()
 			}
+			this.getInfo()
 		},
 		methods: {
+			async getInfo(){
+				let res=await getUserInfo()
+				this.userinfo=res.data
+				console.log(this.userinfo);
+			},
 			toinvited(){
 				navigateTo("mine/invited")
 			},
