@@ -87,3 +87,10 @@ export function checkPhone(data) {
 		params:data
     });
 }
+
+export function getTutoInfo() {
+	return request({
+		url: "/system/tutorials/",
+		method: "get",
+	});
+}
