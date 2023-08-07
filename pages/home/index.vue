@@ -122,11 +122,13 @@
 					{
 						id: '3',
 						text: '教程',
+						path: '/pages/tuto/tuto',
 						icon: 'https://wp.lhtools.live/view.php/89c7901b29846c0de9ef6579c09376ba.png'
 					},
 					{
 						id: '4',
 						text: '邀请好友',
+						path:'/pages/mine/invited',
 						icon: 'https://wp.lhtools.live/view.php/f4792154e5abc746b12053f7bad73849.png'
 					},
 				],
