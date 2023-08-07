@@ -5,7 +5,7 @@
 			<my-avatar :member-info="memberInfo" size="big"></my-avatar>
 		</view>
 		<view>
-			<uv-cell title="JGZID" :value='userinfo.id'></uv-cell>
+			<uv-cell title="ZBZID" :value='userinfo.id'></uv-cell>
 			<uv-cell title="昵称" :value="userinfo.nickname? userinfo.nickname:'未知用户'" :isLink="true" @click="tonickname"></uv-cell>
 			<uv-cell title="个人简介" :value="limitWords(userinfo.bio)" :isLink="true" @click="tonote"></uv-cell>
 			<uv-cell title="邀请人ID" :value="userinfo.inviter_id? userinfo.inviter_id:'暂无'"></uv-cell>

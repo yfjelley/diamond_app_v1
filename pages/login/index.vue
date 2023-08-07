@@ -7,7 +7,7 @@
 
 			</view>
 			<view class="login-title">
-				登录JGZ
+				登录ZBZ
 			</view>
 
 			<view class="select-card">
