@@ -7,26 +7,26 @@
 				</view>
 			</view>
 			<view class="tips">
-				<text class="red">模拟交易</text>
-				<text class="orange">网格交易</text>
-				<text class="ccc">{{detail.status=='STARTED'? '执行中':'手动停止'}}</text>
+				<text class="red">{{detail.market_type}}</text>
+				<text class="orange">{{detail.strategy_type}}</text>
+				<text class="ccc">{{detail.stop_type}}</text>
 			</view>
 			<view class="info-name">
 				<view class="">
-					<text>策略号:</text>
-					<text>2023080100000</text>
+					<text>策略号：</text>
+					<text>{{detail.serial_number}}</text>
 				</view>
 				<view class="">
-					<text>预估月化</text>
-					<text>+0.00%</text>
+					<text>预估月化：</text>
+					<text>+{{detail.estimated_monthly_return_rate}}%</text>
 				</view>
 				<view class="">
-					<text>运行时间</text>
-					<text style="margin-left: 6px;">{{detail.running_time[0]}}天{{detail.running_time[1]}}小时{{detail.running_time[2]}}分钟</text>
+					<text>运行时长：</text>
+					<text>{{detail.running_time[0]}}天{{detail.running_time[1]}}小时{{detail.running_time[2]}}分钟</text>
 				</view>
 			</view>
 			<view class="nav-info">
-				<view class="info-item">
+<!-- 				<view class="info-item">
 					<text>初始资金</text>
 					<text>50.00</text>
 				</view>
@@ -37,7 +37,7 @@
 				<view class="info-item">
 					<text>已用资金</text>
 					<text>50.00</text>
-				</view>
+				</view> -->
 				<view class="info-item">
 					<text>收益</text>
 					<text style="font-weight: bold;" :class="[Math.sign(detail.return)==1? 'tip1':'tip2']">{{detail.return}}</text>
@@ -50,7 +50,7 @@
 					<text>预估月化</text>
 					<text style="font-weight: bold;" :class="[Math.sign(detail.estimated_monthly_return_rate)==1? 'tip1':'tip2']">{{Math.sign(detail.estimated_monthly_return_rate)==1?'+':''}}{{detail.estimated_monthly_return_rate}}%</text>
 				</view>
-				<view class="info-item">
+<!-- 				<view class="info-item">
 					<text>已提取收益</text>
 					<text>50.00</text>
 				</view>
@@ -73,7 +73,7 @@
 				<view class="info-item">
 					<text>最大回撤</text>
 					<text>50.00</text>
-				</view>
+				</view> -->
 			</view>
 		</view>
 		<view class="tab">
