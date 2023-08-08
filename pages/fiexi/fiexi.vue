@@ -25,7 +25,7 @@
 									<!-- <image :src="item.icon" mode=""></image> -->
 								</view>
 								<view class="deal-info-text">
-									<view>{{item.famliy}} 永续</view>
+									<view>{{item.famliy}} <text v-show="item.type == 'swap'">永续</text> </view>
 									<view class="text-ccc">{{'￥'+formatNumber(item.vol24h)}}</view>
 								</view>
 							</view>
