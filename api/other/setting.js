@@ -19,7 +19,7 @@ export function settingApp() {
 
 export function getAppinfo() {
     return request({
-        url: "/system/system_messages",
+        url: "/system/system_messages/",
         method: "get"
     });
 }
@@ -28,7 +28,7 @@ export function getAppinfo() {
 
 export function getMineinfo() {
     return request({
-        url: "/system/personal_messages",
+        url: "/system/personal_messages/",
         method: "get"
     });
 }
@@ -86,4 +86,18 @@ export function checkPhone(data) {
         method: "post",
 		params:data
     });
+}
+
+export function getTutoInfo() {
+	return request({
+		url: "/system/tutorials/",
+		method: "get",
+	});
+}
+
+export function getUserinvited() {
+	return request({
+		url: "/system/user/user_invitation_qrcode/",
+		method: "get",
+	});
 }

@@ -122,11 +122,13 @@
 					{
 						id: '3',
 						text: '教程',
+						path: '/pages/tuto/tuto',
 						icon: 'https://wp.lhtools.live/view.php/89c7901b29846c0de9ef6579c09376ba.png'
 					},
 					{
 						id: '4',
 						text: '邀请好友',
+						path:'/pages/mine/invited',
 						icon: 'https://wp.lhtools.live/view.php/f4792154e5abc746b12053f7bad73849.png'
 					},
 				],
@@ -194,22 +196,60 @@
 				this.curselectId = item.id
 			},
 			NAVTo(item) {
-				uni.navigateTo({
-					url: `${item.path}?detail=${JSON.stringify(item)}`
-				})
+				if(item.text=='策略排行'||item.text=='教程'){
+					uni.setStorageSync('cur',1)
+					uni.switchTab({
+						url: `${item.path}?detail=${JSON.stringify(item)}`
+					})
+				}else{
+					uni.navigateTo({
+						url: `${item.path}?detail=${JSON.stringify(item)}`
+					})
+				}
 			},
 			TABTo(item) {
-				uni.navigateTo({
-					url: `${item.path}?detail=${JSON.stringify(item)}`
-				})
+				// uni.navigateTo({
+				// 	url: `${item.path}?detail=${JSON.stringify(item)}`
+				// })
 			},
 			todetail(item){
 				var obj={
 					text:item.symbol
 				}
-				uni.navigateTo({
-					url: `/pages/btcdetall/btcdetall?detail=${JSON.stringify(obj)}`
-				})
+				// uni.navigateTo({
+				// 	url: `/pages/btcdetall/btcdetall?detail=${JSON.stringify(obj)}`
+				// })
+			},
+			fomatFloat(num, n) {
+				var f = parseFloat(num);
+				if (isNaN(f)) {
+					return false;
+				}
+				f = Math.round(num * Math.pow(10, n)) / Math.pow(10, n); // n 幂
+				var s = f.toString();
+				var rs = s.indexOf('.');
+				//判定如果是整数，增加小数点再补0
+				if (rs < 0) {
+					rs = s.length;
+					s += '.';
+				}
+				while (s.length <= rs + n) {
+					s += '0';
+				}
+				return s;
+			},
+			formatNumber(number) {
+				if (number >= 10000) {
+					const quotient = Math.floor(number / 10000);
+					const remainder = number % 10000;
+
+					// 使用toFixed方法将小数部分保留两位小数
+					const formattedNumber = remainder === 0 ? `${quotient}万` :
+						`${quotient}.${(remainder / 1000).toFixed(2).substring(2)}万`;
+					return formattedNumber;
+				} else {
+					return number.toLocaleString();
+				}
 			},
 			init() {
 				uni.showLoading()

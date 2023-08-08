@@ -8,26 +8,26 @@
 				</view>
 			</view>
 			<view class="tips">
-				<text class="red">模拟交易</text>
-				<text class="orange">网格交易</text>
-				<text class="ccc">手动停止</text>
+				<text class="red">{{detail.market_type}}</text>
+				<text class="orange">{{detail.strategy_type}}</text>
+				<text class="ccc">{{detail.stop_type}}</text>
 			</view>
 			<view class="info-name">
 				<view class="">
-					<text>策略号:</text>
-					<text>{{detail.id}}</text>
+					<text>策略号：</text>
+					<text>{{detail.serial_number}}</text>
 				</view>
 				<view class="">
-					<text>预估月化</text>
+					<text>预估月化：</text>
 					<text>+{{detail.estimated_monthly_return_rate}}%</text>
 				</view>
 				<view class="">
-					<text>运行时间</text>
+					<text>运行时长：</text>
 					<text>{{detail.running_time[0]}}天{{detail.running_time[1]}}小时{{detail.running_time[2]}}分钟</text>
 				</view>
 			</view>
 			<view class="nav-info">
-				<view class="info-item">
+<!-- 				<view class="info-item">
 					<text>初始资金</text>
 					<text>{{detail.initial_funds}}</text>
 				</view>
@@ -38,7 +38,7 @@
 				<view class="info-item">
 					<text>已提取收益</text>
 					<text>{{detail.withdrawn_earnings}}</text>
-				</view>
+				</view> -->
 				<view class="info-item">
 					<text>收益</text>
 					<text style="color: #4caf50;font-weight: bold;">{{detail.return}}</text>
@@ -51,7 +51,7 @@
 					<text>预估月化</text>
 					<text style="color: #4caf50;font-weight: bold;">+{{detail.estimated_monthly_return_rate}}%</text>
 				</view>
-				<view class="info-item">
+<!-- 				<view class="info-item">
 					<text>交易笔数</text>
 					<text>{{detail.trade_count}}</text>
 				</view>
@@ -62,7 +62,7 @@
 				<view class="info-item">
 					<text>最大回撤</text>
 					<text>{{detail.max_drawdown}}</text>
-				</view>
+				</view> -->
 			</view>
 		</view>
 		<view class="tab">

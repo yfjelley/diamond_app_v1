@@ -8,7 +8,7 @@
 		
 			</view>
 			<view class="login-title">
-				注册JGZ
+				注册ZBZ
 			</view>
 		
 			<view class="select-card">
