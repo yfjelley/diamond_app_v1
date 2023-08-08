@@ -209,7 +209,7 @@
 			  let arr = []
 			  this.$store.state.ws.on("message", (res) => {
 				// console.log(JSON.parse(res.data))
-					if (!JSON.parse(res.data).event) {
+					if (JSON.parse(res.data).data) {
 						uni.hideLoading()
 						arr.push({
 							...JSON.parse(res.data).data
@@ -238,7 +238,7 @@
 				return arr.filter((item, index, array) => {
 					// 检查当前元素后面是否还有与该元素属性相同的元素
 					const nextItems = array.slice(index + 1);
-					const hasDuplicates = nextItems.some(nextItem => nextItem[prop] === item[prop]);
+					const hasDuplicates = nextItems.some(nextItem => nextItem[prop] === item[prop] && nextItem.type === 'swap');
 
 					// 如果后续仍存在具有相同属性的元素，则过滤掉当前元素
 					return !hasDuplicates;

@@ -268,7 +268,7 @@
 			 const that = this
 			 let arr = []
 			  this.$store.state.ws.on("message", (res) => {
-					if (!JSON.parse(res.data).event) {
+					if (JSON.parse(res.data).data) {
 						uni.hideLoading()
 						if (JSON.parse(res.data).data.famliy == 'BTC/USDT') {
 							that.$set(that.tablist, 0, {
