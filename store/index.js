@@ -10,8 +10,11 @@ import Socket from '@/api/wsapi/ws'
 
 let socket =  new Socket(WS_URL)
 socket.on('message',(evt)=>{
-  if(evt.type=='ping'){
-    socket.send({cmd:'pong'})
+  if(JSON.parse(evt.data).action=='ping'){
+       let pingMessage = {
+           action: "ping"
+    }
+    socket.send(pingMessage)
   }
 })
 

@@ -118,6 +118,17 @@
 			this.init()
 			this.getfavoriteList()
 		},
+		onHide() {
+				let subscribeMessage = {
+					action: "unsubscribe",
+					subscriptions: [{
+							group: 'ticker',
+							symbols: ["spot"] // 订阅现货的
+						},
+					]
+				};
+			this.$store.state.ws.send(subscribeMessage);
+		},
 		methods: {
 			handleChange(e) {
 				switch (e.name) {
@@ -147,7 +158,9 @@
 			},
 			getfavoriteList() {
 				getfavorite().then(res => {
-					this.favlist = res.data || []
+					if(res.code == 200){
+					  this.favlist= res.data
+					}
 				})
 			},
 			setFavorite(i) {
@@ -269,7 +282,7 @@
 				return arr.filter((item, index, array) => {
 					// 检查当前元素后面是否还有与该元素属性相同的元素
 					const nextItems = array.slice(index + 1);
-					const hasDuplicates = nextItems.some(nextItem => nextItem[prop] === item[prop]);
+					const hasDuplicates = nextItems.some(nextItem => nextItem[prop] === item[prop] && nextItem.type === 'spot');
 
 					// 如果后续仍存在具有相同属性的元素，则过滤掉当前元素
 					return !hasDuplicates;
@@ -295,7 +308,7 @@
 			}
 		},
 		beforeDestroy() {
-			this.socke.close()
+			// this.socke.close()
 		},
 		computed: {
 			list() {

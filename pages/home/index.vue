@@ -167,6 +167,17 @@
 			this.init()
 			this.getMessage()
 		},
+		onHide(){
+				let subscribeMessage = {
+					action: "unsubscribe",
+					subscriptions: [{
+							group: 'ticker',
+							symbols: ["swap"] // 订阅永续合约的
+						}
+					]
+				};
+			this.$store.state.ws.send(subscribeMessage);			
+		},
 		methods: {
 			getMessage(){
 				getAppinfo().then(res=>{
