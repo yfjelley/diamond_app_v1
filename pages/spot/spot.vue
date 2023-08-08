@@ -78,39 +78,38 @@
 				riseList: [],
 				favlist:[],
 				active: 'market',
-				tabbars: [
-				  {
-				    name: 'market',
-				    text: '行情',
-				    icon: 'notice',
-					path:'/pages/home/index',
-				    icon: '/static/tabbar/market.png',
-				    iconActive: '/static/tabbar/market-selected.png'
-				  },
-				  {
-				    name: 'trade',
-				    text: '交易',
-				    icon: 'notice',
-					path:'/pages/trade/index',
-				    icon: '/static/tabbar/trade.png',
-				    iconActive: '/static/tabbar/trade-selected.png'
-				  },
-				 {
-				   name: 'contract',
-				   text: '合约',
-				   icon: 'notice',
-				   path:'/pages/contract/index',
-				   icon: '/static/tabbar/contract.png',
-				   iconActive: '/static/tabbar/contract-selected.png'
-				 },
-				 {
-				   name: 'wallet',
-				   text: '资产',
-				   icon: 'notice',
-				   path:'/pages/wallet/index',
-				   icon: '/static/tabbar/wallet.png',
-				   iconActive: '/static/tabbar/wallet-selected-active.png'
-				 },
+				tabbars: [{
+						name: 'market',
+						text: '行情',
+						icon: 'notice',
+						path: '/pages/home/index',
+						icon: '/static/tabbar/market.png',
+						iconActive: '/static/tabbar/market-selected.png'
+					},
+					{
+						name: 'trade',
+						text: '量化',
+						icon: 'notice',
+						path: '/pages/tactics/tactics',
+						icon: '/static/tabbar/trade.png',
+						iconActive: '/static/tabbar/trade-selected.png'
+					},
+					{
+						name: 'contract',
+						text: '教程',
+						icon: 'notice',
+						path: '/pages/tuto/tuto',
+						icon: '/static/tabbar/contract.png',
+						iconActive: '/static/tabbar/contract-selected.png'
+					},
+					{
+						name: 'wallet',
+						text: '资产',
+						icon: 'notice',
+						path: '/pages/wallet/index',
+						icon: '/static/tabbar/wallet.png',
+						iconActive: '/static/tabbar/wallet-selected-active.png'
+					},
 				]
 			}
 		},

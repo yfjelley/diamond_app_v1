@@ -88,17 +88,17 @@
 					},
 					{
 						name: 'trade',
-						text: '交易',
+						text: '量化',
 						icon: 'notice',
-						path: '/pages/trade/index',
+						path: '/pages/tactics/tactics',
 						icon: '/static/tabbar/trade.png',
 						iconActive: '/static/tabbar/trade-selected.png'
 					},
 					{
 						name: 'contract',
-						text: '合约',
+						text: '教程',
 						icon: 'notice',
-						path: '/pages/contract/index',
+						path: '/pages/tuto/tuto',
 						icon: '/static/tabbar/contract.png',
 						iconActive: '/static/tabbar/contract-selected.png'
 					},
@@ -106,7 +106,7 @@
 						name: 'wallet',
 						text: '资产',
 						icon: 'notice',
-						info: '/pages/wallet/index',
+						path: '/pages/wallet/index',
 						icon: '/static/tabbar/wallet.png',
 						iconActive: '/static/tabbar/wallet-selected-active.png'
 					},
