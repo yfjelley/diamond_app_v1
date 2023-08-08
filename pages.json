@@ -488,6 +488,17 @@
             }
             
         }
+        ,{
+            "path" : "pages/tactics/sharp",
+            "style" :
+            {
+            	"navigationBarTitleText": "策略分享",
+            	"navigationStyle": "custom",
+            	"app-plus": {
+            		"background": "#191E29"
+            	}
+            }
+        }
     ],
 	"easycom": {
 	  "autoscan": true,

@@ -10,7 +10,7 @@
 				<view class="top">
 					<view class="info">
 						<view class="avatar">
-							
+							<image :src="avatar" mode=""></image>
 						</view>
 						<text>账户资产(USDT)</text>
 					</view>
@@ -69,9 +69,11 @@
 <script>
 	
 	import {getMineBalance} from '@/api/user/member.js'
+	import {HOST} from '@/config/app.js'
 	export default {
 		data() {
 			return {
+				avatar: HOST + uni.getStorageSync('userinfo').avatar,
 				cur:'1',
 				balance:'',
 				isyc:false,
@@ -211,6 +213,10 @@
 							border: 1px solid #fff;
 							border-radius: 50%;
 							margin-right: 12rpx;
+							image{
+								width: 100%;
+								height: 100%;
+							}
 						}
 					}
 				}
