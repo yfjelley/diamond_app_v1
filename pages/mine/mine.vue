@@ -22,8 +22,24 @@
 				<uv-cell icon="setting-fill" title="邀请好友" :isLink="true" @click="toinvited"></uv-cell>
 				<uv-cell icon="integral-fill" title="安全中心" :isLink="true" @click="tosafe"></uv-cell>
 				<uv-cell icon="setting-fill" title="分享应用" :isLink="true" @click="shareApp"></uv-cell>
+				<uni-popup ref="popup" type="share">
+					<view class="popbox">
+						
+						<view style="display:inline-block;width:100%;word-wrap:break-word;white-space:normal;">
+						<span style="border: 2rpx solid;border-radius: 13rpx;"><uni-icons type="bars" size="20"/></span>{{downUrl}}
+						</view>
+						<view class="pop-btn-box">
+							<span @click="copyUrl">复制</span>
+						</view>
+						
+					</view>
+				</uni-popup>
 				<uv-cell icon="integral-fill" title="清理缓存" value="1111" @click="clearStorage"></uv-cell>
-				<uv-cell icon="info-circle-fill" title="退出登录" @click="Logout"></uv-cell>
+			</view>
+		</view>
+		<view class="btn-box">
+			<view class="btn" @click="Logout">
+				<text>退出登录</text>
 			</view>
 		</view>
 	</view>
@@ -78,6 +94,7 @@
 					avatat: ""
 				},
 				isShowInit: false, // 是否在页面显示的时候重新加载
+				downUrl: 'https://abcdsafsdfsgsdgsgsdgdsggggggggggggsdfgsdfsadfsdfsdafasddf',// 分享应用url
 			}
 		},
 		onLoad() {
@@ -108,31 +125,45 @@
 				navigateTo("mine/invited")
 			},
 			shareApp() {
-				// #ifdef APP-PLUS
-				let that = this
-				let routes = getCurrentPages(); // 获取当前打开过的页面路由数组
-				let curRoute = routes[routes.length - 1].$page.fullPath // 获取当前页面路由，也就是最后一个打开的页面路由
-				uni.share({
-					provider: "weixin", //分享服务提供商（即weixin|qq|sinaweibo）
-					scene: scene, //场景，可取值参考下面说明。
-					type: 0, //分享形式
-					href: `${HTTP_IP_URL}${curRoute}&spread=${that.uid}`, //跳转链接
-					title: that.storeInfo.storeName, //分享内容的标题
-					summary: that.storeInfo.storeInfo, //分享内容的摘要
-					imageUrl: that.storeInfo.image, //图片地址
-					success: function(res) {
-						that.posters = false; //成功后关闭底部弹框
-					},
-					fail: function(err) {
-						uni.showToast({
-							title: '分享失败',
-							icon: 'none',
-							duration: 2000
-						})
-						that.posters = false;
-					}
-				});
-				// #endif
+				this.$refs.popup.open('bottom')
+				// // #ifdef APP-PLUS
+				// let that = this
+				// let routes = getCurrentPages(); // 获取当前打开过的页面路由数组
+				// let curRoute = routes[routes.length - 1].$page.fullPath // 获取当前页面路由，也就是最后一个打开的页面路由
+				// uni.share({
+				// 	provider: "weixin", //分享服务提供商（即weixin|qq|sinaweibo）
+				// 	scene: scene, //场景，可取值参考下面说明。
+				// 	type: 0, //分享形式
+				// 	href: `${HTTP_IP_URL}${curRoute}&spread=${that.uid}`, //跳转链接
+				// 	title: that.storeInfo.storeName, //分享内容的标题
+				// 	summary: that.storeInfo.storeInfo, //分享内容的摘要
+				// 	imageUrl: that.storeInfo.image, //图片地址
+				// 	success: function(res) {
+				// 		that.posters = false; //成功后关闭底部弹框
+				// 	},
+				// 	fail: function(err) {
+				// 		uni.showToast({
+				// 			title: '分享失败',
+				// 			icon: 'none',
+				// 			duration: 2000
+				// 		})
+				// 		that.posters = false;
+				// 	}
+				// });
+				// // #endif
+			},
+			close(){
+				this.$refs.popup.close()
+			},
+			copyUrl(){
+				uni.setClipboardData({
+					data: this.downUrl
+				})
+				uni.showToast({
+					title: '链接已复制到剪切版',
+					icon:'none'
+				})
+				this.close()
 			},
 			countStorageSize() {
 				// #ifdef APP-PLUS
@@ -306,5 +337,43 @@
 		color: #000;
 		font-size: 13px;
 		margin-right: 5px;
+	}
+	.btn-box {
+		position: fixed;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		top: 80vh;
+		width: 100%;
+		height: 120rpx;
+		padding: 12rpx;
+		box-sizing: border-box;	
+	}
+	.btn{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 80%;
+		height: 100%;
+		color: #fff;
+		border-radius: 48rpx;
+		background-color: #e2d35a;
+	}
+	.popbox{
+		height: 20vh;
+		background-color: rgb(248, 248, 248);
+		border-radius: 20rpx 20rpx 0 0;
+		padding: 20rpx 20rpx 20rpx 20rpx;
+	}
+	.url-box{
+		width: 100%;
+	}
+	.pop-btn-box{
+		margin-top: 20rpx;
+		width: 80rpx;
+		border: 2rpx solid #8a8a8a;
+		border-radius: 20rpx;
+		text-align: center;
+		color: #8a8a8a;
 	}
 </style>

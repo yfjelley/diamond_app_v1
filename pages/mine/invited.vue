@@ -92,7 +92,7 @@
 		justify-content: center;
 		width: 100%;
 		height: 100vh;
-		background: url('@/static/OIP.jpg') no-repeat;
+		background: url('https://wp.lhtools.live/view.php/488073bad0762b8c80943031b0e8cfd8.jpg') no-repeat;
 		background-size: 100% 100%;
 		.content{
 			display: flex;
