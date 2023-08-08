@@ -54,7 +54,7 @@
 		navigateBack,
 		navigateTo,
 		navigateToLogin
-	} from "../../utils/common";
+	} from "../../utils/common"; 
 	import {
 		mapActions,
 		mapGetters
