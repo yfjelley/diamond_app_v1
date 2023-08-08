@@ -261,7 +261,7 @@
 			  let arr = []
 			  this.$store.state.ws.on("message", (res) => {
 				// console.log(JSON.parse(res.data))
-					if (!JSON.parse(res.data).event) {
+					if (JSON.parse(res.data).data) {
 						uni.hideLoading()
 						arr.push({
 							isfav: 0,
