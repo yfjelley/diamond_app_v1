@@ -74,6 +74,7 @@
 				value: 2,
 				temp: [],
 				arr:[],
+				favlist:[],
 				adCurrent: 0,
 				adMode: 'round',
 				riseList: [],
@@ -124,8 +125,20 @@
 			this.init()
 			this.getfavoriteList()
 		},
-		beforeDestroy() {
-			// this.$store.state.ws.doClose()
+		onHide() {
+				let subscribeMessage = {
+					action: "unsubscribe",
+					subscriptions: [{
+							group: 'ticker',
+							symbols: ["swap"] // 订阅永续合约的
+						},
+						{
+							group: 'ticker',
+							symbols: ["spot"] // 订阅现货的
+						},
+					]
+				};
+			this.$store.state.ws.send(subscribeMessage);
 		},
 		methods: {
 			handleChange(e) {
