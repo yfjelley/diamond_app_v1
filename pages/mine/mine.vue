@@ -1,6 +1,6 @@
 <template>
 	<view class="mine-box">
-		<uni-nav-bar left-icon="left" right-icon="cart" @clickLeft='back' @clickRight='select' />
+		<uni-nav-bar left-icon="left" @clickLeft='back' />
 		<view class="mine-body">
 			<view class="mine-header" @click="headerClick">
 				<my-avatar :member-info="userinfo" size="big"></my-avatar>
