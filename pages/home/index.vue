@@ -167,7 +167,7 @@
 			this.init()
 			this.getMessage()
 		},
-		onHide(){
+		onUnload(){
 				let subscribeMessage = {
 					action: "unsubscribe",
 					subscriptions: [{

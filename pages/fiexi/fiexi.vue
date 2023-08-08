@@ -25,7 +25,7 @@
 									<!-- <image :src="item.icon" mode=""></image> -->
 								</view>
 								<view class="deal-info-text">
-									<view>{{item.famliy}}</view>
+									<view>{{item.famliy}} 永续</view>
 									<view class="text-ccc">{{'￥'+formatNumber(item.vol24h)}}</view>
 								</view>
 							</view>
@@ -125,7 +125,7 @@
 			this.init()
 			this.getfavoriteList()
 		},
-		onHide() {
+		onUnload() {
 				let subscribeMessage = {
 					action: "unsubscribe",
 					subscriptions: [{
@@ -214,7 +214,7 @@
 						arr.push({
 							...JSON.parse(res.data).data
 						})
-						this.temp = this.filterArray(arr, 'famliy')
+						this.temp = this.filterArray(arr, 'symbol')
 						this.temp.forEach(item=>{
 							this.favlist.forEach(i=>{
 								if(item.symbol.toUpperCase()==i){
@@ -238,7 +238,7 @@
 				return arr.filter((item, index, array) => {
 					// 检查当前元素后面是否还有与该元素属性相同的元素
 					const nextItems = array.slice(index + 1);
-					const hasDuplicates = nextItems.some(nextItem => nextItem[prop] === item[prop] && nextItem.type === 'swap');
+					const hasDuplicates = nextItems.some(nextItem => nextItem[prop] === item[prop]);
 
 					// 如果后续仍存在具有相同属性的元素，则过滤掉当前元素
 					return !hasDuplicates;

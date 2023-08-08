@@ -28,7 +28,7 @@
 		mapGetters
 	} from "vuex";
 	import {
-		navigateTo
+		navigateTo , reLaunch
 	} from "../../utils/common";
 	export default {
 		name: "my-nav-bar-search-home",
@@ -99,7 +99,7 @@
 						url:'/pages/home/index'
 					})
 				}else{
-					navigateTo(item.path, "slide-in-left")
+					reLaunch(item.path, "slide-in-left")
 				}
 			}
 		}
