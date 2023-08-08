@@ -2,7 +2,7 @@
 		<uni-nav-bar class="my-nav-bar-search-home" fixed color="#000" :border="false" background-color="#FFFFFF" :statusBar="true">
 			<block slot="left">
 				<view class="nav-bar-left" @click="asset">
-					<my-avatar :member-info="memberInfo" size="mini"></my-avatar>
+					<my-avatar :member-info="userinfo" size="mini"></my-avatar>
 				</view>
 			</block>
 			<view class="link-container">
@@ -37,6 +37,7 @@
 		},
 		data() {
 			return {
+				userinfo: uni.getStorageSync('userinfo'),
 				cur:1,
 				navlist: [{
 						id: 1,
@@ -75,10 +76,14 @@
 			...mapGetters({
 				memberInfo: "memberInfo",
 			}),
+
 		},
 		mounted() {
 			this.cur=this.msgNum
 		},
+
+			
+
 		methods: {
 			onClickInput() {
 				this.$emit('onClickInput')

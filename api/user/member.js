@@ -34,3 +34,11 @@ export function setUserInfo(data) {
 		data:data
     });
 }
+
+// 获取可用头像
+export function getAvatars() {
+    return request({
+        url: "/system/avatars/",
+        method: "get"
+    });
+}
