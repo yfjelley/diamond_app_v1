@@ -124,7 +124,7 @@
 			this.init()
 			this.getfavoriteList()
 		},
-		onHide() {
+		onUnload() {
 				let subscribeMessage = {
 					action: "unsubscribe",
 					subscriptions: [{
