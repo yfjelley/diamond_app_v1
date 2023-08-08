@@ -476,6 +476,18 @@
             }
             
         }
+        ,{
+            "path" : "pages/mine/avater",
+            "style" :                                                                                    
+            {
+				"navigationBarTitleText": "修改头像",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"background": "#191E29"
+				}
+            }
+            
+        }
     ],
 	"easycom": {
 	  "autoscan": true,

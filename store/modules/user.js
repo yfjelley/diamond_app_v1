@@ -70,6 +70,7 @@ const actions = {
                             isGoogleKey: data.isGoogleKey || 0,
                         };
                         commit(types.MEMBER_INFO, info);
+						console.log("info:", info)
                     }
                     resolve(res);
                 })

@@ -3,7 +3,7 @@
 		<uni-nav-bar left-icon="left" right-icon="cart" @clickLeft='back' @clickRight='select' />
 		<view class="mine-body">
 			<view class="mine-header" @click="headerClick">
-				<my-avatar :member-info="memberInfo" size="big"></my-avatar>
+				<my-avatar :member-info="userinfo" size="big"></my-avatar>
 				<view class="mine-user">
 					<text
 						class="mine-username">{{userinfo.username? userinfo.nickname || '未知用户' : '请登录'}}</text>
@@ -23,6 +23,7 @@
 				<uv-cell icon="integral-fill" title="安全中心" :isLink="true" @click="tosafe"></uv-cell>
 				<uv-cell icon="setting-fill" title="分享应用" :isLink="true" @click="shareApp"></uv-cell>
 				<uv-cell icon="integral-fill" title="清理缓存" value="1111" @click="clearStorage"></uv-cell>
+				<uv-cell icon="info-circle-fill" title="退出登录" @click="Logout"></uv-cell>
 			</view>
 		</view>
 	</view>
@@ -73,7 +74,9 @@
 			return {
 				storageSize: '',
 				user:'',
-				userinfo:'',
+				userinfo:{
+					avatat: ""
+				},
 				isShowInit: false, // 是否在页面显示的时候重新加载
 			}
 		},
@@ -92,12 +95,14 @@
 				this.init()
 			}
 			this.getInfo()
+			console.log('memberInfo:', this.memberInfo)
 		},
 		methods: {
 			async getInfo(){
 				let res=await getUserInfo()
 				this.userinfo=res.data
 				console.log(this.userinfo);
+				uni.setStorageSync('userinfo', this.userinfo)
 			},
 			toinvited(){
 				navigateTo("mine/invited")
@@ -202,6 +207,16 @@
 			...mapActions({
 				getUserInfo: "getUserInfo",
 			}),
+			...mapActions({
+				logout: "logout",
+			}),
+			Logout(){
+				console.log("点击退出");
+				this.logout();
+				uni.reLaunch({
+					url:'/pages/login/index'
+				})
+			},
 			back() {
 				navigateBack()
 			},

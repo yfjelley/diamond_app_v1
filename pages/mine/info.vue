@@ -1,8 +1,8 @@
 <template>
 	<view>
 		<uni-nav-bar left-icon="left" title="个人信息" @clickLeft='back' />
-		<view class="avatar-box">
-			<my-avatar :member-info="memberInfo" size="big"></my-avatar>
+		<view class="avatar-box" @click="toavater">
+			<my-avatar :member-info="userinfo" size="big"></my-avatar>
 		</view>
 		<view>
 			<uv-cell title="ZBZID" :value='userinfo.id'></uv-cell>
@@ -24,14 +24,15 @@
 		mapActions,
 		mapGetters
 	} from "vuex";
-	import myAvatar from "../../components/my-avatar/index"
+	import myAvatar from "../../components/my-avatar/index";
+	import {setUserInfo} from '@/api/user/member.js'
 	export default {
 		components:{myAvatar},
 		data() {
 			return {
-				userinfo:{
-					
-				}
+				userinfo: uni.getStorage({
+					key: 'userinfo'
+				})
 			}
 		},
 		computed:{
@@ -63,6 +64,11 @@
 			tonote(){
 				uni.navigateTo({
 					url:'/pages/mine/note'
+				})
+			},
+			toavater(){
+				uni.navigateTo({
+					url:'/pages/mine/avater'
 				})
 			}
 		}

@@ -1,26 +1,34 @@
 <template>
   <view class="my-avatar" :class="[{mini: size === 'mini', border: memberInfo.memberId > 0}]">
-    <text class="my-avatar-text" v-if="memberInfo.memberId > 0">{{memberInfo.name.slice(0,2)}}</text>
+
+  	<image class="my-avatar-text" v-if="memberInfo.avatar" :src="host+memberInfo.avatar" mode="widthFix"></image>
     <uni-icons v-else custom-prefix="custom-icon" type="contact" color="#717C8A" :size="size === 'mini' ? 43 : 70"></uni-icons>
   </view>
 </template>
 
 <script>
+import {HOST} from '@/config/app.js'
 export default {
   name: "my-avatar",
   props: {
     memberInfo: {
       type: Object,
       default: {
-        memberId: 0,
-        name: ""
+        id: 0,
+        nickname: "",
+		avatar: HOST+uni.getStorageSync('avatar'),
+		host: HOST
       }
     },
+	host: {
+		type: String,
+		default: HOST
+	},
     size: {
       type: String,
       default: 'mini'
     }
-  },
+  }
 }
 </script>
 
