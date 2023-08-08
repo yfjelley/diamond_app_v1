@@ -70,7 +70,7 @@
 										<view class="name">
 											{{item.name}}
 										</view>
-										<text class="share" @click.stop="share">分享</text>
+										<text class="share" @click.stop="toshare(item)">分享</text>
 									</view>
 									<view class="tips">
 										<text class="red">模拟交易</text>
@@ -122,7 +122,7 @@
 										<view class="name">
 											{{item.name}}
 										</view>
-										<text class="share" @click.stop="share">分享</text>
+										<text class="share" @click.stop="toshare(item)">分享</text>
 									</view>
 									<view class="tips">
 										<text class="red">模拟交易</text>
@@ -179,7 +179,7 @@
 										<view class="name">
 											{{item.name}}
 										</view>
-										<text class="share" @click.stop="share">分享</text>
+										<text class="share" @click.stop="toshare(item)">分享</text>
 									</view>
 									<view class="tips">
 										<text class="red">模拟交易</text>
@@ -245,7 +245,7 @@
 										<view class="name">
 											{{item.name}}
 										</view>
-										<text class="share" @click.stop="share">分享</text>
+										<text class="share" @click.stop="toshare(item)">分享</text>
 									</view>
 									<view class="tips">
 										<text class="red">模拟交易</text>
@@ -297,7 +297,7 @@
 										<view class="name">
 											{{item.name}}
 										</view>
-										<text class="share" @click.stop="share">分享</text>
+										<text class="share" @click.stop="toshare(item)">分享</text>
 									</view>
 									<view class="tips">
 										<text class="red">模拟交易</text>
@@ -655,25 +655,11 @@
 					})
 				}
 			},
-			share() { // 分享
-				uni.showModal({
-					title: '分享',
-					content: HOST,
-					success: function (res) {
-						if (res.confirm) {
-							uni.setClipboardData({
-								data: HOST
-							})
-							uni.showToast({
-								title:'已复制到剪切版',
-								icon: 'none'
-							})
-						} else if (res.cancel) {
-							console.log('用户点击取消');
-						}
-					}
-				});
-				
+			toshare(item) { // 分享
+				console.log('item:',item)
+				uni.navigateTo({
+					url: "/pages/tactics/sharp?info=" + encodeURIComponent(JSON.stringify(item).replace(/%/g, '%25'))
+				})	
 			},
 			stop(item) { // 停止策略
 				this.stopId = item.id
