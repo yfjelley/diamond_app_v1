@@ -37,7 +37,7 @@
 				<uv-cell icon="integral-fill" title="清理缓存" value="1111" @click="clearStorage"></uv-cell>
 			</view>
 		</view>
-		<view class="btn-box">
+		<view class="btn-box" v-if="userinfo.id">
 			<view class="btn" @click="Logout">
 				<text>退出登录</text>
 			</view>
@@ -112,7 +112,6 @@
 				this.init()
 			}
 			this.getInfo()
-			console.log('memberInfo:', this.memberInfo)
 		},
 		methods: {
 			async getInfo(){
@@ -244,8 +243,9 @@
 			Logout(){
 				console.log("点击退出");
 				this.logout();
+				uni.clearStorageSync()
 				uni.reLaunch({
-					url:'/pages/login/index'
+					url:'/'
 				})
 			},
 			back() {
