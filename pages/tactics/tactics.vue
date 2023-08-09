@@ -1,5 +1,6 @@
 <template>
 	<view class="content">
+		<view style="height: 10px;"></view>
 		<zb-tab :activeStyle="{
 		    fontWeight: 'bold',
 			color:'orange',

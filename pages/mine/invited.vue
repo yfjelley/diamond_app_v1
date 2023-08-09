@@ -39,7 +39,7 @@
 			<uni-popup ref="popup" type="share">
 				<view class="popbox">
 					<view class="pop-icon-box" @click="capture">
-						<image src="../../static/pic.png" mode="widthFix"></image>
+						<!-- <image src="../../static/pic.png" mode="widthFix"></image> -->
 						保存图片
 					</view>
 					<view class="pop-btn-box" @click="close">
