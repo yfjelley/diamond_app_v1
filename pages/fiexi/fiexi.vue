@@ -81,10 +81,10 @@
 				active: 'market',
 				tabbars: [{
 						name: 'market',
-						text: 'Market',
+						text: '行情',
 						icon: 'notice',
 						path: '/pages/home/index',
-						icon: '/static/tabbar/market-selected.png',
+						icon: '/static/tabbar/market.png',
 						iconActive: '/static/tabbar/market-selected.png'
 					},
 					{
@@ -105,9 +105,9 @@
 					},
 					{
 						name: 'wallet',
-						text: 'Wallet',
+						text: '资产',
 						icon: 'notice',
-						path: '/pages/wallet/index',
+						info: '/pages/wallet/index',
 						icon: '/static/tabbar/wallet.png',
 						iconActive: '/static/tabbar/wallet-selected-active.png'
 					},

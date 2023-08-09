@@ -80,7 +80,7 @@
 				active: 'market',
 				tabbars: [{
 						name: 'market',
-						text: 'Market',
+						text: '行情',
 						icon: 'notice',
 						path: '/pages/home/index',
 						icon: '/static/tabbar/market.png',
@@ -88,7 +88,7 @@
 					},
 					{
 						name: 'trade',
-						text: 'quantify',
+						text: '量化',
 						icon: 'notice',
 						path: '/pages/tactics/tactics',
 						icon: '/static/tabbar/trade.png',
@@ -96,7 +96,7 @@
 					},
 					{
 						name: 'contract',
-						text: 'Tutorial',
+						text: '教程',
 						icon: 'notice',
 						path: '/pages/tuto/tuto',
 						icon: '/static/tabbar/contract.png',
@@ -104,7 +104,7 @@
 					},
 					{
 						name: 'wallet',
-						text: 'Wallet',
+						text: '资产',
 						icon: 'notice',
 						info: '/pages/wallet/index',
 						icon: '/static/tabbar/wallet.png',
