@@ -87,6 +87,7 @@
 		},
 		data() {
 			return {
+				userinfo: uni.getStorageSync('userinfo'),
 				socket: "",
 				socketStatus: false,
 				socketMsgQueue: [],

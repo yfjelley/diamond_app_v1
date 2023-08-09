@@ -52,6 +52,7 @@
 	import {
 		login
 	} from '../../api/user/login.js'
+	import {getUserInfo} from '@/api/user/member.js'
 	import {
 		getStorageSync,
 		setStorageSync
@@ -64,7 +65,8 @@
 				curselectId: '1',
 				phoneno: '',
 				password: '',
-				people: []
+				people: [],
+				userinfo: {}
 			};
 		},
 		methods: {
@@ -84,6 +86,11 @@
 			},
 			back() {
 				uni.navigateBack()
+			},
+			async getInfo(){
+				let res=await getUserInfo()
+				this.userinfo=res.data
+				setStorageSync('userinfo', this.userinfo)
 			},
 			buttonlogin() {
 				let req = {
@@ -111,7 +118,7 @@
 					setStorageSync('refresh', res.data.refresh)
 					setStorageSync('phone', this.phoneno)
 					setStorageSync('password', this.password)
-
+					this.getInfo();
 					uni.switchTab({
 						url: '/pages/home/index'
 					})

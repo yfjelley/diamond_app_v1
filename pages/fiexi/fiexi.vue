@@ -89,7 +89,7 @@
 					},
 					{
 						name: 'trade',
-						text: 'quantify',
+						text: '量化',
 						icon: 'notice',
 						path: '/pages/tactics/tactics',
 						icon: '/static/tabbar/trade.png',
@@ -97,7 +97,7 @@
 					},
 					{
 						name: 'contract',
-						text: 'Tutorial',
+						text: '教程',
 						icon: 'notice',
 						path: '/pages/tuto/tuto',
 						icon: '/static/tabbar/contract.png',
@@ -107,7 +107,7 @@
 						name: 'wallet',
 						text: 'Wallet',
 						icon: 'notice',
-						info: '/pages/wallet/index',
+						path: '/pages/wallet/index',
 						icon: '/static/tabbar/wallet.png',
 						iconActive: '/static/tabbar/wallet-selected-active.png'
 					},

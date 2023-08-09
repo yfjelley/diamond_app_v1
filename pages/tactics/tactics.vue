@@ -15,8 +15,8 @@
 		<view class="info-list">
 			<view v-if="ismine" class="min-info">
 				<view class="head-info">
-					<image class="avatar" src="" mode=""></image>
-					<text class="name">卡卡</text>
+					<image class="avatar" :src="host+userInfo.avatar" mode="widthFix"></image>
+					<text class="name">{{userInfo.nickname}}</text>
 				</view>
 				<view class="detail-info">
 					<view class="title">
@@ -25,17 +25,17 @@
 						</view>
 					</view>
 					<view class="info-name">
-						<view class="">
-							<text>策略号:</text>
-							<text>2023080100000</text>
+						<view class="info-item">
+							<view class="text-lable">策略号:</view>
+							<view class="text-data">2023080100000</view>
 						</view>
-						<view class="">
-							<text>预估月化</text>
-							<text>+0.00%</text>
+						<view class="info-item">
+							<view class="text-lable">预估月化</view>
+							<view class="text-data">+0.00%</view>
 						</view>
-						<view class="">
-							<text>运行时间</text>
-							<text>0天1小时0分钟</text>
+						<view class="info-item">
+							<view class="text-lable">运行时间</view>
+							<view class="text-data">0天1小时0分钟</view>
 						</view>
 					</view>
 				</view>
@@ -70,7 +70,7 @@
 										<view class="name">
 											{{item.name}}
 										</view>
-										<text class="share" @click.stop="share">分享</text>
+										<text class="share" @click.stop="toshare(item)">分享</text>
 									</view>
 									<view class="tips">
 										<text class="red">模拟交易</text>
@@ -122,7 +122,7 @@
 										<view class="name">
 											{{item.name}}
 										</view>
-										<text class="share" @click.stop="share">分享</text>
+										<text class="share" @click.stop="toshare(item)">分享</text>
 									</view>
 									<view class="tips">
 										<text class="red">模拟交易</text>
@@ -179,7 +179,7 @@
 										<view class="name">
 											{{item.name}}
 										</view>
-										<text class="share" @click.stop="share">分享</text>
+										<text class="share" @click.stop="toshare(item)">分享</text>
 									</view>
 									<view class="tips">
 										<text class="red">模拟交易</text>
@@ -245,7 +245,7 @@
 										<view class="name">
 											{{item.name}}
 										</view>
-										<text class="share" @click.stop="share">分享</text>
+										<text class="share" @click.stop="toshare(item)">分享</text>
 									</view>
 									<view class="tips">
 										<text class="red">模拟交易</text>
@@ -297,7 +297,7 @@
 										<view class="name">
 											{{item.name}}
 										</view>
-										<text class="share" @click.stop="share">分享</text>
+										<text class="share" @click.stop="toshare(item)">分享</text>
 									</view>
 									<view class="tips">
 										<text class="red">模拟交易</text>
@@ -531,9 +531,15 @@
 		deleGrid,
 		stop
 	} from '@/api/other/strategy.js'
+	import {
+		mapGetters
+	} from "vuex";
+	import {getUserInfo} from '@/api/user/member.js'
+	import {HOST} from '@/config/app.js'
 	export default {
 		data() {
 			return {
+				host: HOST,
 				index: 0,
 				ismine: false,
 				childrenIndex: 0,
@@ -610,7 +616,11 @@
 					}]
 				],
 				stopId: '',
-				type: ''
+				type: '',
+				userInfo: {
+					avatar: "",
+					name: ""
+				}
 			}
 		},
 		onLoad(options) {
@@ -623,6 +633,7 @@
 			} else {
 				this.index = 0
 			}
+			this.GetUserInfo()
 		},
 		onShow() {
 			if(this.index!==3){
@@ -644,11 +655,11 @@
 					})
 				}
 			},
-			share() { // 分享
-				uni.showToast({
-					title: '分享',
-					icon: 'none'
-				})
+			toshare(item) { // 分享
+				console.log('item:',item)
+				uni.navigateTo({
+					url: "/pages/tactics/sharp?info=" + encodeURIComponent(JSON.stringify(item).replace(/%/g, '%25'))
+				})	
 			},
 			stop(item) { // 停止策略
 				this.stopId = item.id
@@ -830,6 +841,10 @@
 				if (name == 2) { // 请求策略排行
 					this.getAllGridInfo(name, type)
 				}
+			},
+			async GetUserInfo() {
+				let res = await getUserInfo()
+				this.userInfo = res.data
 			}
 		},
 		watch: {
@@ -914,10 +929,19 @@
 				height: 135rpx;
 				margin-bottom: 24rpx;
 				line-height: 35rpx;
-
-				view {
-					margin-top: 12rpx;
+				.info-item{
+					display: flex;
+					flex-direction: row;
+					margin-top: 15rpx;
+					.text-lable{
+						color: #b9adb1;
+						width: 20%;
+					}
+					.text-data{
+						font-weight: 550;
+					}
 				}
+				
 			}
 		}
 
@@ -1197,4 +1221,7 @@
 			}
 		}
 	}
+	
+	
+	
 </style>
