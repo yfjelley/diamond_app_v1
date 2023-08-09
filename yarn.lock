@@ -3,11 +3,11 @@
 
 
 "@hyoga/uni-socket.io@^3.0.4":
-  version "3.0.4"
-  resolved "https://registry.npmmirror.com/@hyoga/uni-socket.io/-/uni-socket.io-3.0.4.tgz#0c7a321197bc5deb60af9481fd906fe167111340"
-  integrity sha512-m04M/ALXpTWcKoJGPDMzJosmzuopyAXF51DFN/qxLyXnbCFeQwsWOXT/XNLl4aWoBVGwQ7IptECFFRCA6z5C8A==
+  "integrity" "sha512-m04M/ALXpTWcKoJGPDMzJosmzuopyAXF51DFN/qxLyXnbCFeQwsWOXT/XNLl4aWoBVGwQ7IptECFFRCA6z5C8A=="
+  "resolved" "https://registry.npmmirror.com/@hyoga/uni-socket.io/-/uni-socket.io-3.0.4.tgz"
+  "version" "3.0.4"
 
-klinecharts@^9.5.0:
-  version "9.5.0"
-  resolved "https://registry.npmmirror.com/klinecharts/-/klinecharts-9.5.0.tgz#0c06e9914a785e564cd3e5143ec9eec01e563fdd"
-  integrity sha512-yAzkq7qoZcCiHOyQDrsBAsQT5osBGskg7yhrWoz97ty1dC8gckrlfQmSaX0S7r2nCTTmfHjeXJwY5G3Qh5e8EA==
+"klinecharts@^9.5.0":
+  "integrity" "sha512-yAzkq7qoZcCiHOyQDrsBAsQT5osBGskg7yhrWoz97ty1dC8gckrlfQmSaX0S7r2nCTTmfHjeXJwY5G3Qh5e8EA=="
+  "resolved" "https://registry.npmmirror.com/klinecharts/-/klinecharts-9.5.0.tgz"
+  "version" "9.5.0"

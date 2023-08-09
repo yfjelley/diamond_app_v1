@@ -81,31 +81,31 @@
 				active: 'market',
 				tabbars: [{
 						name: 'market',
-						text: '行情',
+						text: 'Market',
 						icon: 'notice',
 						path: '/pages/home/index',
-						icon: '/static/tabbar/market.png',
+						icon: '/static/tabbar/market-selected.png',
 						iconActive: '/static/tabbar/market-selected.png'
 					},
 					{
 						name: 'trade',
-						text: '交易',
+						text: 'quantify',
 						icon: 'notice',
-						path: '/pages/trade/index',
+						path: '/pages/tactics/tactics',
 						icon: '/static/tabbar/trade.png',
 						iconActive: '/static/tabbar/trade-selected.png'
 					},
 					{
 						name: 'contract',
-						text: '合约',
+						text: 'Tutorial',
 						icon: 'notice',
-						path: '/pages/contract/index',
+						path: '/pages/tuto/tuto',
 						icon: '/static/tabbar/contract.png',
 						iconActive: '/static/tabbar/contract-selected.png'
 					},
 					{
 						name: 'wallet',
-						text: '资产',
+						text: 'Wallet',
 						icon: 'notice',
 						info: '/pages/wallet/index',
 						icon: '/static/tabbar/wallet.png',
@@ -150,12 +150,12 @@
 						break;
 					case 'trade':
 					uni.reLaunch({
-						url: '/pages/trade/index'
+						url: '/pages/tactics/tactics'
 					})
 						break;
 					case 'contract':
 					uni.reLaunch({
-						url: '/pages/contract/index'
+						url: '/pages/tuto/tuto'
 					})
 						break;
 					case 'wallet':

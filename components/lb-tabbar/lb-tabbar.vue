@@ -83,7 +83,7 @@ export default {
     },
     activeColor: {
       type: String,
-      default: '#409EFF'
+      default: '#2DBD96'
     },
     inactiveTextColor: String,
     activeTextColor: String,

@@ -843,6 +843,9 @@
 </script>
 
 <style scoped lang="scss">
+	.content{
+		position: relative;
+	}
 	.zb-tabs__nav {
 		position: sticky;
 		top: 0;

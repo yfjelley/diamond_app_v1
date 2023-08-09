@@ -476,6 +476,24 @@
             }
             
         }
+        ,{
+            "path" : "pages/mine/bindapi",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "绑定API",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/mine/apilist",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "绑定API",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"easycom": {
 	  "autoscan": true,
