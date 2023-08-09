@@ -1,6 +1,7 @@
 <template>
 	<view class="box">
 		<uni-nav-bar left-icon="left" right-text="记录" title="邀请有奖" @clickLeft='back' @clickRight='con' />
+		
 		<view class="con">
 			<view class="content">
 				<view class="qrcode">
@@ -31,10 +32,22 @@
 				</view>
 			</view>
 		</view>
-		<view class="btn-box">
-			<view class="btn">
+		<view v-if="!hide" class="btn-box">
+			<view class="btn" @click="open">
 				<text>立即邀请</text>
 			</view>
+			<uni-popup ref="popup" type="share">
+				<view class="popbox">
+					<view class="pop-icon-box" @click="capture">
+						<image src="../../static/pic.png" mode="widthFix"></image>
+						保存图片
+					</view>
+					<view class="pop-btn-box" @click="close">
+						<view>取消</view>
+					</view>
+				</view>
+				
+			</uni-popup>
 		</view>
 	</view>
 </template>
@@ -44,7 +57,8 @@
 	export default {
 		data() {
 			return {
-				detail:''
+				detail:'',
+				hide: false,
 			}
 		},
 		onLoad() {
@@ -57,7 +71,7 @@
 			},
 			limitWords(txt){
 			    var str = txt;
-			    str = str&&str.substr(0,30) + '...';
+			    str = str&&str.substr(0,15) + '...'+str.substr(-10,14);
 			    return str;
 			},
 			back() {
@@ -79,7 +93,56 @@
 					}
 				});
 			},
-			
+			capture() {
+				// #ifdef APP-PLUS  
+				let that = this;
+				that.hide=true;
+				var pages = getCurrentPages();  
+				var page = pages[pages.length - 1];  
+				var bitmap = null;
+				var currentWebview = page.$getAppWebview();
+				bitmap = new plus.nativeObj.Bitmap('amway_img');
+				// 将webview内容绘制到Bitmap对象中
+				currentWebview.draw(bitmap, function() {
+					// console.log('截屏绘制图片成功');
+					//这里我将文件名用四位随机数拼接了，不然会出现当前图片替换上一张图片只能保存一张图片的问题
+					let rand = Math.floor(Math.random() * 10000)
+					let saveUrl = '_doc/' + rand + 'a.jpg'
+					bitmap.save(saveUrl, {}, function(i) {
+						// console.log('保存图片成功：' + JSON.stringify(i));
+						uni.saveImageToPhotosAlbum({
+							filePath: i.target,
+							success: function() {
+								// bitmap.clear(); //销毁Bitmap图片
+								uni.showToast({
+									title: '保存图片成功',
+									mask: false,
+									duration: 1500
+								});	
+							},complete() {
+								that.hide=false;
+								console.log('hide:',that.hide)
+							}
+						});
+					}, function(e) {
+						console.log('保存图片失败：' + JSON.stringify(e));
+						uni.showToast({
+							title:"保存失败，请确认是否授权",
+							icon:'none'
+						})
+					});
+				}, function(e) {
+					console.log('截屏绘制图片失败：' + JSON.stringify(e));
+				});
+				// #endif
+				//currentWebview.append(amway_bit);
+			},
+			open(){
+				this.$refs.popup.open('bottom')
+			},
+			close(){
+				this.$refs.popup.close()
+			},
 		}
 	}
 </script>
@@ -168,6 +231,40 @@
 			border-radius: 48rpx;
 			background-color: #1492e2;
 		}
+	}
+	.popbox{
+		height: 20vh;
+		width: 100%;
+		background-color: rgb(248, 248, 248);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-end;
+		
+	}
+	
+	.pop-icon-box{
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-bottom: 15rpx;
+		image{
+			width: 80rpx;
+		}
+	}
+	.pop-btn-box{
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+		border-top: 1rpx solid #d0d0d0;
+		height: 30%;
+		color: #8a8a8a;
+	}
+	.hide{
+		display: none;
 	}
 
 </style>
