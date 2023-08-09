@@ -93,7 +93,7 @@
 					}
 				});
 			},
-			async capture() {
+			capture() {
 				// #ifdef APP-PLUS  
 				let that = this;
 				that.hide=true;
