@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<my-nav-bar-search-home :msg-num="value"></my-nav-bar-search-home>
+		<my-nav-bar-search-home :key="new Date().getTime()" :msg-num="value"></my-nav-bar-search-home>
 		<view class="content">
 			<view class="card-head">
 				<uni-notice-bar  :speed="30" @getmore="getMore" :showGetMore="true" backgroundColor="#FFFFFF" color="#000000"
@@ -162,6 +162,10 @@
 					},
 				]
 			}
+		},
+		onShow() {
+			console.log('页面显示')
+			this.$forceUpdate()
 		},
 		created() {
 			uni.showLoading()
