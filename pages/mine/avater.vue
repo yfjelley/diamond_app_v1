@@ -61,13 +61,11 @@
 			async getAvatarList() {
 				let res = await getAvatars();
 				this.avatarList = res.data.avatars;
-				console.log(this.avatarList)
 			},
 			// 选中头像
 			toCheck(idx) {
 				this.avatar = this.avatarList[idx];
 				this.selectIdx = idx;
-				console.log('无踪', idx, this.avatar)
 			}
 
 		}

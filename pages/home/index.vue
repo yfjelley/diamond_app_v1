@@ -1,10 +1,10 @@
 <template>
 	<view>
-		<my-nav-bar-search-home :key="new Date().getTime()" :msg-num="value"></my-nav-bar-search-home>
+		<my-nav-bar-search-home v-if="update" :msg-num="value"></my-nav-bar-search-home>
 		<view class="content">
 			<view class="card-head">
-				<uni-notice-bar :speed="15" @getmore="getMore" :showGetMore="true" backgroundColor="#FFFFFF" color="#000000"
-					moreColor="#000000" :showIcon="true" :scrollable="true" :text="noticeText" @click="godetail"></uni-notice-bar>
+				<uni-notice-bar  :speed="30" @getmore="getMore" :showGetMore="true" backgroundColor="#FFFFFF" color="#000000"
+					moreColor="#000000" :showIcon="true" :scrollable="true" :text="noticeText"></uni-notice-bar>
 			</view>
 			<view class="banner">
 				<uni-swiper-dot :info="adList" :current="adCurrent" field="content" :mode="adMode"
@@ -100,11 +100,10 @@
 				btc_usdt_price: '',
 				eth_usdt_price: '',
 				riseList: [],
-				noticeinfo:{},
 				adList: [
-					    require('../../static/banner/001.jpg'),
-					    require('../../static/banner/002.jpg'),
-					    require('../../static/banner/003.jpg'),
+					'https://cdn.uviewui.com/uview/swiper/swiper3.png',
+					'https://cdn.uviewui.com/uview/swiper/swiper2.png',
+					'https://cdn.uviewui.com/uview/swiper/swiper1.png',
 				],
 				noticeList: [
 					
@@ -113,25 +112,25 @@
 						id: '1',
 						text: '充值',
 						path: '/pages/rechar/rechar',
-						icon: require('../../static/home/chongzhi.png')
+						icon: 'https://wp.lhtools.live/view.php/d495de6cda014288ebb53c83f85b4995.png'
 					},
 					{
 						id: '2',
 						text: '策略排行',
 						path: '/pages/tactics/tactics',
-						icon: require('../../static/home/paihangbang.png')
+						icon:'https://wp.lhtools.live/view.php/3859bce8d9bc5d5523e39893836db8e1.png'
 					},
 					{
 						id: '3',
 						text: '教程',
 						path: '/pages/tuto/tuto',
-						icon: require('../../static/home/jiaocheng2.png')
+						icon: 'https://wp.lhtools.live/view.php/89c7901b29846c0de9ef6579c09376ba.png'
 					},
 					{
 						id: '4',
 						text: '邀请好友',
 						path:'/pages/mine/invited',
-						icon: require('../../static/home/yaoqinghaoyou.png')
+						icon: 'https://wp.lhtools.live/view.php/f4792154e5abc746b12053f7bad73849.png'
 					},
 				],
 				tablist: [{
@@ -154,19 +153,23 @@
 				selectlist: [{
 						id: '1',
 						text: '涨幅榜',
-						icon: require('../../static/home/shangzhang.png')
+						icon: 'https://wp.lhtools.live/view.php/ad7984123af84964581e745a6854ded5.png'
 					},
 					{
 						id: '2',
 						text: '跌幅榜',
-						icon: require('../../static/home/xiadie.png')
+						icon: 'https://wp.lhtools.live/view.php/2248682ed91846456b9ff7c5570523ef.png'
 					},
-				]
+				],
+				update: true,
 			}
 		},
 		onShow() {
-			console.log('页面显示')
-			this.$forceUpdate()
+			// 刷新头像
+			this.update = false;
+			this.$nextTick(() => {
+			    this.update = true
+			})
 		},
 		created() {
 			uni.showLoading()
@@ -185,15 +188,9 @@
 			this.$store.state.ws.send(subscribeMessage);			
 		},
 		methods: {
-			godetail(){
-				uni.navigateTo({
-					url:`/pages/mine/msgdetail?detail=${JSON.stringify(this.noticeinfo)}`
-				})
-			},
 			getMessage(){
 				getAppinfo().then(res=>{
 					const msg=res.data.results
-					this.noticeinfo = res.data.results[0]
 					this.noticeList.push(msg[0].title)
 					this.noticeList.push(msg[0].content)
 				})
