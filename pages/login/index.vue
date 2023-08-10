@@ -119,9 +119,7 @@
 					setStorageSync('phone', this.phoneno)
 					setStorageSync('password', this.password)
 					this.getInfo();
-					uni.switchTab({
-						url: '/pages/home/index'
-					})
+					uni.navigateBack()
 
 				})
 
