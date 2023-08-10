@@ -102,9 +102,9 @@
 				riseList: [],
 				noticeinfo:{},
 				adList: [
-					'https://cdn.uviewui.com/uview/swiper/swiper3.png',
-					'https://cdn.uviewui.com/uview/swiper/swiper2.png',
-					'https://cdn.uviewui.com/uview/swiper/swiper1.png',
+					    require('../../static/banner/001.jpg'),
+					    require('../../static/banner/002.jpg'),
+					    require('../../static/banner/003.jpg'),
 				],
 				noticeList: [
 					
@@ -113,25 +113,25 @@
 						id: '1',
 						text: '充值',
 						path: '/pages/rechar/rechar',
-						icon: 'https://wp.lhtools.live/view.php/d495de6cda014288ebb53c83f85b4995.png'
+						icon: require('../../static/home/chongzhi.png')
 					},
 					{
 						id: '2',
 						text: '策略排行',
 						path: '/pages/tactics/tactics',
-						icon:'https://wp.lhtools.live/view.php/3859bce8d9bc5d5523e39893836db8e1.png'
+						icon: require('../../static/home/paihangbang.png')
 					},
 					{
 						id: '3',
 						text: '教程',
 						path: '/pages/tuto/tuto',
-						icon: 'https://wp.lhtools.live/view.php/89c7901b29846c0de9ef6579c09376ba.png'
+						icon: require('../../static/home/jiaocheng2.png')
 					},
 					{
 						id: '4',
 						text: '邀请好友',
 						path:'/pages/mine/invited',
-						icon: 'https://wp.lhtools.live/view.php/f4792154e5abc746b12053f7bad73849.png'
+						icon: require('../../static/home/yaoqinghaoyou.png')
 					},
 				],
 				tablist: [{
@@ -154,12 +154,12 @@
 				selectlist: [{
 						id: '1',
 						text: '涨幅榜',
-						icon: 'https://wp.lhtools.live/view.php/ad7984123af84964581e745a6854ded5.png'
+						icon: require('../../static/home/shangzhang.png')
 					},
 					{
 						id: '2',
 						text: '跌幅榜',
-						icon: 'https://wp.lhtools.live/view.php/2248682ed91846456b9ff7c5570523ef.png'
+						icon: require('../../static/home/xiadie.png')
 					},
 				]
 			}
