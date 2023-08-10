@@ -240,9 +240,9 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: flex-end;
-		
+
 	}
-	
+
 	.pop-icon-box{
 		width: 100%;
 		display: flex;

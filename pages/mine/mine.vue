@@ -19,9 +19,9 @@
 				<uni-icons custom-prefix="custom-icon" type="forward" color="#c1cdde" size="12"></uni-icons>
 			</view>
 			<view>
-				<uv-cell icon="setting-fill" title="邀请好友" :isLink="true" @click="toinvited"></uv-cell>
-				<uv-cell icon="integral-fill" title="安全中心" :isLink="true" @click="tosafe"></uv-cell>
-				<uv-cell icon="setting-fill" title="分享应用" :isLink="true" @click="shareApp"></uv-cell>
+				<uv-cell icon="account" title="邀请好友" :isLink="true" @click="toinvited"></uv-cell>
+				<uv-cell icon="empty-permission" title="安全中心" :isLink="true" @click="tosafe"></uv-cell>
+				<uv-cell icon="share" title="分享应用" :isLink="true" @click="shareApp"></uv-cell>
 				<uni-popup ref="popup" type="share">
 					<view class="popbox">
 						
@@ -34,7 +34,7 @@
 						
 					</view>
 				</uni-popup>
-				<uv-cell icon="integral-fill" title="清理缓存" value="1111" @click="clearStorage"></uv-cell>
+				<uv-cell icon="trash-fill" title="清理缓存" value="1111" @click="clearStorage"></uv-cell>
 			</view>
 		</view>
 		<view class="btn-box" v-if="userinfo.id">

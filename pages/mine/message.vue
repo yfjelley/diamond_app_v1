@@ -78,76 +78,102 @@
 </script>
 
 <style lang="scss">
-	page{
-		background-color: #f3f3f3;
-	}
-	.box{
-		position: relative;
-	}
-	.select-card {
-		position: fixed;
-		top: 80rpx;
+page {
+	background-color: #f8f8f8;
+}
+
+.box {
+	position: relative;
+}
+
+.select-card {
+	position: fixed;
+	top: 80rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	width: 100%;
+	height: 60px; // Increased height
+	background-color: #ffffff;
+	padding: 5px 0; // Slightly increased padding
+	z-index: 9999;
+	border-bottom: 1px solid #e0e0e0;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+	.select-item {
+		flex: 1;
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
-		width: 100%;
-		height: 49px;
-		background-color: #ffffff;
-		padding: 2px 0;
-		z-index: 9999;
-		.select-item {
-			flex: 0 0 50%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 100%;
-			height: 100%;
-			font-size: 28rpx
-		}
+		justify-content: center;
+		height: 100%;
+		font-size: 30rpx;
+		color: #888;
+		transition: color 0.3s; // More specific transition
 
-		.select-item-active {
-			border-bottom: 2px solid orange;
+		&:active { // Tap effect for mobile
+			color: #333;
 		}
 	}
-	.msglist{
-		margin-top: 135rpx;
-		height: 100vh;
-		background-color: #f3f3f3;
-		padding: 0 24rpx;
-		box-sizing: border-box;
-		.msg-item{
-			display: flex;
-			flex-direction: column;
-			width: 100%;
-			height: 345rpx;
-			.title{
-				text-align: center;
-				height: 75rpx;
-				line-height: 75rpx;
-			}
-			.msg-item-box{
-				padding: 24rpx;
-				width: 100%;
-				height: fit-content;
+
+	.select-item-active {
+		border-bottom: 3px solid #007BFF;
+		color: #007BFF;
+	}
+}
+
+.msglist {
+    margin-top: 200rpx; // 增加间距
+	padding: 0 24rpx;
+	box-sizing: border-box;
+	overflow: auto;
+
+	.msg-item {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		padding: 20rpx 0; // Adjusted padding
+		background: #ffffff; // Solid color for better readability
+		margin-bottom: 20rpx; // Even margin
+		border-radius: 16rpx;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+		.title {
+		   height: 100rpx; // 增加高度
+            line-height: 100rpx; // 匹配线高
+			text-align: center;
+			font-weight: bold;
+			color: #333;
+			font-size: 30rpx;
+			margin-bottom: 20rpx; // Increased margin between title and content
+		}
+		.msg-item-box {
+			padding: 24rpx;
+			box-sizing: border-box;
+
+			.tip {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 0 12rpx;
 				box-sizing: border-box;
-				border-radius: 24rpx;
-				background-color: #fff;
-				.tip{
-					display: flex;
-					align-items: center;
-					justify-content: space-between;
-					padding: 0 12rpx;
-					box-sizing: border-box;
-					margin-bottom: 12rpx;
-					.tip-text{
-						flex: 0 0 90%;
-						width: 100%;
-						overflow: hidden;
-						text-overflow: ellipsis;
-						white-space: nowrap;
-					}
+				margin-bottom: 20rpx; // Increased margin between tip and content
+
+				.tip-text {
+					flex: 1;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					font-size: 28rpx;
 				}
 			}
+			.con {
+				color: #666;
+				font-size: 26rpx;
+				line-height: 1.5; // Improved readability
+			}
 		}
 	}
+}
+
+
 </style>
