@@ -42,3 +42,10 @@ export function getAvatars() {
         method: "get"
     });
 }
+
+export function getMyQuant() {
+    return request({
+        url: "/strategy/myquant/",
+        method: "get"
+    });
+}

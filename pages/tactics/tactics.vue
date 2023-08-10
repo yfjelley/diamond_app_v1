@@ -16,27 +16,28 @@
 		<view class="info-list">
 			<view v-if="ismine" class="min-info">
 				<view class="head-info">
-					<image class="avatar" :src="host+userInfo.avatar" mode="widthFix"></image>
-					<text class="name">{{userInfo.nickname}}</text>
+					<image class="avatar" :src="host+quantInfo.avatar" mode="widthFix"></image>
+					<text class="name">{{quantInfo.username}}</text>
 				</view>
 				<view class="detail-info">
 					<view class="title">
 						<view class="name">
-							111
+							{{quantInfo.bio}}
+						</view>
+					</view>
+					<view class="title">
+						<view class="name">
+							指北针量化交易第{{quantInfo.joined_days}}天
 						</view>
 					</view>
 					<view class="info-name">
 						<view class="info-item">
-							<view class="text-lable">策略号:</view>
-							<view class="text-data">2023080100000</view>
+							<view class="text-lable">现货策略数：</view>
+							<view class="text-data">{{quantInfo.spot_strategy_count}}</view>
 						</view>
 						<view class="info-item">
-							<view class="text-lable">预估月化</view>
-							<view class="text-data">+0.00%</view>
-						</view>
-						<view class="info-item">
-							<view class="text-lable">运行时间</view>
-							<view class="text-data">0天1小时0分钟</view>
+							<view class="text-lable">合约策略数：</view>
+							<view class="text-data">{{quantInfo.grid_strategy_count}}</view>
 						</view>
 					</view>
 				</view>
@@ -535,7 +536,7 @@
 	import {
 		mapGetters
 	} from "vuex";
-	import {getUserInfo} from '@/api/user/member.js'
+	import {getMyQuant} from '@/api/user/member.js'
 	import {HOST} from '@/config/app.js'
 	export default {
 		data() {
@@ -618,9 +619,12 @@
 				],
 				stopId: '',
 				type: '',
-				userInfo: {
+				quantInfo: {
 					avatar: "",
-					name: ""
+					username : "",
+					bio: "",
+					spot_strategy_count: "",
+					grid_strategy_count: ""
 				}
 			}
 		},
@@ -634,7 +638,7 @@
 			} else {
 				this.index = 0
 			}
-			this.GetUserInfo()
+			this.GetQuantInfo()
 		},
 		onShow() {
 			if(this.index!==3){
@@ -843,9 +847,9 @@
 					this.getAllGridInfo(name, type)
 				}
 			},
-			async GetUserInfo() {
-				let res = await getUserInfo()
-				this.userInfo = res.data
+			async GetQuantInfo() {
+				let res = await getMyQuant()
+				this.quantInfo = res.data
 			}
 		},
 		watch: {
