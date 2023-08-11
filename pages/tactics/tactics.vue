@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<view style="height: 10px;"></view>
+		<view style="height: 28px;"></view>
 		<zb-tab :activeStyle="{
 		    fontWeight: 'bold',
 			color:'orange',
@@ -867,14 +867,14 @@
 		position: relative;
 	}
 	.zb-tabs__nav {
-		position: fixed;
+		position: sticky;
 		top: 0;
 		z-index: 9999;
 	}
 
 	.tab-card {
 		.zb-tabs__nav {
-			position: fixed;
+			position: sticky;
 			top: 40px;
 			z-index: 9998;
 		}
@@ -1011,7 +1011,7 @@
 	}
 
 	.info-list {
-		margin-top: 80px;
+		// margin-top: 80px;
 		width: 100%;
 		height: 100vh;
 		background-color: #f3f3f3;
