@@ -867,15 +867,15 @@
 		position: relative;
 	}
 	.zb-tabs__nav {
-		position: sticky;
+		position: fixed;
 		top: 0;
 		z-index: 9999;
 	}
 
 	.tab-card {
 		.zb-tabs__nav {
-			position: sticky;
-			top: 80rpx;
+			position: fixed;
+			top: 40px;
 			z-index: 9998;
 		}
 	}
@@ -1011,6 +1011,7 @@
 	}
 
 	.info-list {
+		margin-top: 80px;
 		width: 100%;
 		height: 100vh;
 		background-color: #f3f3f3;
