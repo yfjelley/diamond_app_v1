@@ -20,10 +20,11 @@
 		},
 		methods: {
 			limitWords(txt){
-			    var str = txt;
-			    str = str.substr(0,20) + '...';
-			    return str;
-			}
+                if (typeof txt !== 'string') return '';
+                var str = txt;
+                str = str.substr(0,20) + '...';
+                return str;
+            }
 		},
 		onLoad(options) {
 			this.detail = JSON.parse(options.detail)
