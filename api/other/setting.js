@@ -101,3 +101,18 @@ export function getUserinvited() {
 		method: "get",
 	});
 }
+
+
+export function getDepoList() {
+	return request({
+		url: "/system/deposits/",
+		method: "get",
+	});
+}
+
+export function getCoinList() {
+	return request({
+		url: "/system/withdrawals/",
+		method: "get",
+	});
+}

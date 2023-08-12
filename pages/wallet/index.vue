@@ -34,7 +34,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="zc">
+<!-- 		<view class="zc">
 			<view class="title">
 				资产分布
 			</view>
@@ -62,12 +62,11 @@
 					<uni-icons type="forward" size="18"></uni-icons>
 				</view>
 			</view>
-		</view>
+		</view> -->
 	</view>
 </template>
 
 <script>
-	
 	import {getMineBalance} from '@/api/user/member.js'
 	import {HOST} from '@/config/app.js'
 	export default {
@@ -83,16 +82,16 @@
 						text:'总览',
 						path:'/pages/wallet/index'
 					},
-					{
-						id:'2',
-						text:'资金账户',
-						path:'/pages/spotacc/spotacc'
-					},
-					{
-						id: '3',
-						text: '现货账户',
-						path:'/pages/spotamount/spotamount'
-					}
+					// {
+					// 	id:'2',
+					// 	text:'资金账户',
+					// 	path:'/pages/spotacc/spotacc'
+					// },
+					// {
+					// 	id: '3',
+					// 	text: '现货账户',
+					// 	path:'/pages/spotamount/spotamount'
+					// }
 				],
 				tablist:[
 					{
@@ -107,11 +106,11 @@
 						path:'/pages/distill/distill',
 						icon:'https://wp.lhtools.live/view.php/732ecb869e213dd174a287012284291d.png'
 					},
-					{
-						id:'3',
-						text:'划转',
-						icon:'https://wp.lhtools.live/view.php/6690d4371d6a54ed92a723c1617c60e8.png'
-					},
+					// {
+					// 	id:'3',
+					// 	text:'划转',
+					// 	icon:'https://wp.lhtools.live/view.php/6690d4371d6a54ed92a723c1617c60e8.png'
+					// },
 					{
 						id:'4',
 						text:'账单',
