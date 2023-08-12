@@ -37,7 +37,6 @@
 		},
 		data() {
 			return {
-				userinfo: uni.getStorageSync('userinfo'),
 				cur:1,
 				navlist: [{
 						id: 1,
@@ -76,7 +75,11 @@
 			...mapGetters({
 				memberInfo: "memberInfo",
 			}),
-
+			userinfo(){
+				console.log('av userinfo:', uni.getStorageSync('userinfo'))
+				if (uni.getStorageSync('userinfo')) return uni.getStorageSync('userinfo');
+				else return {avatar:""}
+			}
 		},
 		mounted() {
 			this.cur=this.msgNum

@@ -30,16 +30,10 @@
 		components:{myAvatar},
 		data() {
 			return {
-				userinfo: uni.getStorage({
-					key: 'userinfo'
-				})
+				userinfo: uni.getStorageSync('userinfo')
 			}
 		},
-		computed:{
-			...mapGetters({
-				memberInfo: "memberInfo",
-			}),
-		},
+
 		onShow() {
 			this.getInfo()
 		},

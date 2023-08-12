@@ -119,7 +119,7 @@
 					setStorageSync('phone', this.phoneno)
 					setStorageSync('password', this.password)
 					this.getInfo();
-					uni.navigateBack()
+					uni.navigateBack();
 
 				})
 

@@ -111,7 +111,7 @@
 				this.isShowInit = false
 				this.init()
 			}
-			this.getInfo()
+			if(uni.getStorageSync('token')) this.getInfo();
 		},
 		methods: {
 			async getInfo(){
@@ -222,6 +222,7 @@
 					});
 				}
 				// #endif
+				uni.clearStorageSync()
 			},
 			tosafe() {
 				navigateTo("mine/safe")
@@ -245,7 +246,7 @@
 				this.logout();
 				uni.clearStorageSync()
 				uni.reLaunch({
-					url:'/'
+					url:'/pages/home/index'
 				})
 			},
 			back() {
@@ -266,7 +267,7 @@
 				navigateTo("mine/setting")
 			},
 			headerClick() {
-				let token=uni.getStorageSync('token')
+				let token = uni.getStorageSync('token')
 				if(token){
 					navigateTo("mine/info")
 				}else{
