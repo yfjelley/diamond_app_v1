@@ -3,6 +3,7 @@
 		<uv-cell :title="detail.user.nickname" is-link value="查看主页" @click="todetail"></uv-cell>
 		<view class="detail-info">
 			<view class="title">
+				<img class="avatar" :src="host + detail.user.avatar" mode=""></img> 
 				<view class="name">
 					{{detail.name}}
 				</view>
@@ -82,9 +83,11 @@
 
 <script>
 	import {getMinInfo} from '@/api/other/strategy.js'
+	import {HOST} from '@/config/app.js'
 	export default {
 		data() {
 			return {
+				host:HOST,
 				detail: '',
 				index:0,
 				list: [{
@@ -123,6 +126,15 @@
 			padding: 24rpx;
 			box-sizing: border-box;
 			background-color: #ffffff;
+			.title{
+				display: flex;
+				align-items: center;
+			}
+			.avatar{
+				width: 30px;
+				height: 30px;
+				margin-right: 10px;
+			}
 			.tips {
 				display: flex;
 				align-items: center;

@@ -376,13 +376,13 @@
 											<view class="name">
 												{{item.user.nickname}}
 											</view>
-											<view class="strategy_name">
-												<view class="name">
-													{{item.name}}
-												</view>
-											</view>
 										</view>
 										<text class="grid">合约网格</text>
+									</view>
+									<view class="title" style="margin: 10px 0;">
+										<view class="name">
+											{{item.name}}
+										</view>
 									</view>
 									<view class="tips">
 										<text class="red">{{item.market_type}}</text>
@@ -448,13 +448,13 @@
 											<view class="name">
 												{{item.user.nickname}}
 											</view>
-											<view class="strategy_name">
-												<view class="name">
-													{{item.name}}
-												</view>
-											</view>
 										</view>
 										<text class="grid">合约网格</text>
+									</view>
+									<view class="title" style="margin: 10px 0;">
+										<view class="name">
+											{{item.name}}
+										</view>
 									</view>
 									<view class="tips">
 										<text class="red">{{item.market_type}}</text>
@@ -1035,7 +1035,7 @@
 				display: flex;
 				flex-direction: column;
 				width: 100%;
-				height: 435rpx;
+				height: 485rpx;
 				padding: 24rpx;
 				box-sizing: border-box;
 				background-color: #ffffff;
