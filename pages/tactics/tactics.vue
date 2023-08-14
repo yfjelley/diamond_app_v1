@@ -76,7 +76,7 @@
 									<view class="tips">
 										<text class="red">{{item.market_type}}</text>
 										<text class="orange">{{item.strategy_type}}</text>
-										<text class="ccc">{{item.status=='STARTED'? '执行中':'手动停止'}}</text>
+										<text class="ccc">{{item.stop_type}}</text>
 									</view>
 									<view class="info-name">
 										<view class="">
@@ -128,7 +128,7 @@
 									<view class="tips">
 										<text class="red">{{item.market_type}}</text>
 										<text class="orange">{{item.strategy_type}}</text>
-										<text class="ccc">{{item.status=='STARTED'? '执行中':'手动停止'}}</text>
+										<text class="ccc">{{item.stop_type}}</text>
 									</view>
 									<view class="info-name">
 										<view class="">
@@ -185,7 +185,7 @@
 									<view class="tips">
 										<text class="red">{{item.market_type}}</text>
 										<text class="orange">{{item.strategy_type}}</text>
-										<text class="ccc">{{item.status=='STARTED'? '执行中':'手动停止'}}</text>
+										<text class="ccc">{{item.stop_type}}</text>
 									</view>
 									<view class="info-name">
 										<view class="">
@@ -251,7 +251,7 @@
 									<view class="tips">
 										<text class="red">{{item.market_type}}</text>
 										<text class="orange">{{item.strategy_type}}</text>
-										<text class="ccc">{{item.status=='STARTED'? '执行中':'手动停止'}}</text>
+										<text class="ccc">{{item.stop_type}}</text>
 									</view>
 									<view class="info-name">
 										<view class="">
@@ -303,7 +303,7 @@
 									<view class="tips">
 										<text class="red">{{item.market_type}}</text>
 										<text class="orange">{{item.strategy_type}}</text>
-										<text class="ccc">{{item.status=='STARTED'? '执行中':'手动停止'}}</text>
+										<text class="ccc">{{item.stop_type}}</text>
 									</view>
 									<view class="info-name">
 										<view class="">
@@ -381,7 +381,7 @@
 									<view class="tips">
 										<text class="red">{{item.market_type}}</text>
 										<text class="orange">{{item.strategy_type}}</text>
-										<text class="ccc">{{item.status=='STARTED'? '执行中':'手动停止'}}</text>
+										<text class="ccc">{{item.stop_type}}</text>
 									</view>
 									<view class="info-name">
 										<view class="">
@@ -448,7 +448,7 @@
 									<view class="tips">
 										<text class="red">{{item.market_type}}</text>
 										<text class="orange">{{item.strategy_type}}</text>
-										<text class="ccc">{{item.status=='STARTED'? '执行中':'手动停止'}}</text>
+										<text class="ccc">{{item.stop_type}}</text>
 									</view>
 									<view class="info-name">
 										<view class="">
