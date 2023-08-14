@@ -74,7 +74,7 @@
 										<text class="share" @click.stop="toshare(item)">分享</text>
 									</view>
 									<view class="tips">
-										<text class="red">模拟交易</text>
+										<text class="red">{{item.market_type}}</text>
 										<text class="orange">网格交易</text>
 										<text class="ccc">{{item.status=='STARTED'? '执行中':'手动停止'}}</text>
 									</view>
@@ -126,7 +126,7 @@
 										<text class="share" @click.stop="toshare(item)">分享</text>
 									</view>
 									<view class="tips">
-										<text class="red">模拟交易</text>
+										<text class="red">{{item.market_type}}</text>
 										<text class="orange">网格交易</text>
 										<text class="ccc">{{item.status=='STARTED'? '执行中':'手动停止'}}</text>
 									</view>
@@ -183,7 +183,7 @@
 										<text class="share" @click.stop="toshare(item)">分享</text>
 									</view>
 									<view class="tips">
-										<text class="red">模拟交易</text>
+										<text class="red">{{item.market_type}}</text>
 										<text class="orange">网格交易</text>
 										<text class="ccc">{{item.status=='STARTED'? '执行中':'手动停止'}}</text>
 									</view>
@@ -249,7 +249,7 @@
 										<text class="share" @click.stop="toshare(item)">分享</text>
 									</view>
 									<view class="tips">
-										<text class="red">模拟交易</text>
+										<text class="red">{{item.market_type}}</text>
 										<text class="orange">网格交易</text>
 										<text class="ccc">{{item.status=='STARTED'? '执行中':'手动停止'}}</text>
 									</view>
@@ -301,7 +301,7 @@
 										<text class="share" @click.stop="toshare(item)">分享</text>
 									</view>
 									<view class="tips">
-										<text class="red">模拟交易</text>
+										<text class="red">{{item.market_type}}</text>
 										<text class="orange">网格交易</text>
 										<text class="ccc">{{item.status=='STARTED'? '执行中':'手动停止'}}</text>
 									</view>
@@ -379,7 +379,7 @@
 										<text class="grid">合约网格</text>
 									</view>
 									<view class="tips">
-										<text class="red">模拟交易</text>
+										<text class="red">{{item.market_type}}</text>
 										<text class="orange">网格交易</text>
 										<text class="ccc">{{item.status=='STARTED'? '执行中':'手动停止'}}</text>
 									</view>
@@ -446,7 +446,7 @@
 										<text class="grid">合约网格</text>
 									</view>
 									<view class="tips">
-										<text class="red">模拟交易</text>
+										<text class="red">{{item.market_type}}</text>
 										<text class="orange">网格交易</text>
 										<text class="ccc">{{item.status=='STARTED'? '执行中':'手动停止'}}</text>
 									</view>
