@@ -34,7 +34,7 @@
 						
 					</view>
 				</uni-popup>
-				<uv-cell icon="trash-fill" title="清理缓存" value="1111" @click="clearStorage"></uv-cell>
+				<!-- <uv-cell icon="trash-fill" title="清理缓存" value="1111" @click="clearStorage"></uv-cell> -->
 			</view>
 		</view>
 		<view class="btn-box" v-if="userinfo.id">
