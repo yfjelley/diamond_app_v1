@@ -1,8 +1,8 @@
 <template>
 	<view class="content">
 		<view class="head-info">
-			<image class="avatar" :src="host+userinfo.avatar" mode=""></image>
-			<text class="name">{{detail.user.nickname}}</text>
+			<image class="avatar" v-if="userinfo && userinfo.avatar" :src="host+userinfo.avatar" mode=""></image>
+			<text class="name">{{userinfo && userinfo.nickname}}</text>
 <!-- 			<view class="tip">
 				<text>加关注</text>
 			</view> -->

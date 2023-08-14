@@ -171,7 +171,7 @@
 			"path": "pages/mine/safe",
 			"style": {
 				"navigationBarTitleText": "安全中心",
-				"navigationStyle": "custom",
+				// "navigationStyle": "custom",
 				"app-plus": {
 					"background": "#191E29"
 				}

@@ -1,6 +1,6 @@
 <template>
 	<view class="box">
-		<uni-nav-bar left-icon="left" title="安全中心" @clickLeft='back' />
+		<!-- <uni-nav-bar left-icon="left" title="安全中心" @clickLeft='back' /> -->
 		<view class="note">为保障您的账号安全，建议开启至少两项安全验证</view>
 		<uv-cell title="手机号码" :isLink="true" @click="tophone"></uv-cell>
 		<uv-cell title="邮箱验证" :isLink="true" @click="toemail"></uv-cell>
