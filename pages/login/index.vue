@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-nav-bar left-icon="left" right-text="注册" @clickLeft='back' color="orange" @clickRight='register' />
+		<!-- <uni-nav-bar left-icon="left" right-text="注册" @clickLeft='back' color="orange" @clickRight='register' /> -->
 		<view class="content">
 			<view class="header">
 				<image src="/static/login/logo.png"></image>
