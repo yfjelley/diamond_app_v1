@@ -1,6 +1,5 @@
 <template>
 	<view>
-		<uni-nav-bar left-icon="left" title="账户流水" @clickLeft='back' />
 		<view class="navlist">
 			<view class="item" :class="[cur==item.id? 'active':'']" v-for="(item,index) in navlist" :key="index"
 				@click="to(item)">

@@ -180,7 +180,7 @@
 			"path": "pages/mine/invited",
 			"style": {
 				"navigationBarTitleText": "邀请有奖",
-				"navigationStyle": "custom",
+				"navigationStyle": "",
 				"app-plus": {
 					"background": "#191E29"
 				}
@@ -228,7 +228,7 @@
 		},{
 			"path": "pages/mine/msgdetail",
 			"style": {
-				"navigationStyle": "custom",
+				"navigationBarTitleText": "系统公告",
 				"app-plus": {
 					"background": "#191E29"
 				}
@@ -297,12 +297,13 @@
         }
         ,{
             "path" : "pages/rechar/rechar",
-            "style" :                                                                                    
-            {
-				"navigationStyle": "custom",
-                "enablePullDownRefresh": false
-            }
-            
+			"style": {
+				"navigationBarTitleText": "充值",
+				"app-plus": {
+					"titleNView": true,
+					"background": "#191E29"
+				} 
+			}
         }
         ,{
             "path" : "pages/spotacc/spotacc",
@@ -328,7 +329,7 @@
             "path" : "pages/distill/distill",
             "style" :                                                                                    
             {
-				"navigationStyle": "custom",
+				"navigationBarTitleText": "提现",
                 "enablePullDownRefresh": false
             }
             
@@ -337,8 +338,8 @@
             "path" : "pages/distilltype/distilltype",
             "style" :                                                                                    
             {
-				"navigationStyle": "custom",
-                "navigationBarTitleText": "",
+				"navigationStyle": "",
+                "navigationBarTitleText": "提现",
                 "enablePullDownRefresh": false
             }
             
@@ -347,8 +348,7 @@
             "path" : "pages/record/record",
             "style" :                                                                                    
             {
-				"navigationStyle": "custom",
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "账户流水",
                 "enablePullDownRefresh": false
             }
             

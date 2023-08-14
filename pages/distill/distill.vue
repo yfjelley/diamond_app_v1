@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-nav-bar left-icon="left" right-icon="cart" @clickLeft='back' @clickRight='toRecord' />
+		<!-- <uni-nav-bar left-icon="left" right-icon="cart" @clickLeft='back' @clickRight='toRecord' /> -->
 		<view class="container">
 			<view class="title">
 				提币

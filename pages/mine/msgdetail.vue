@@ -1,6 +1,5 @@
 <template>
 	<view class="box">
-		<uni-nav-bar left-icon="left" title="系统公告" @clickLeft='back' />
 		<view class="container">
 			<view class="title">{{detail.title}}</view>
 			<view class="tip-time">

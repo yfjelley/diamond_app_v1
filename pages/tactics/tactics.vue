@@ -21,12 +21,12 @@
 				<view class="detail-info">
 					<view class="title">
 						<view class="name">
-							{{quantInfo.bio}}
+							简介：{{quantInfo.bio}}。
 						</view>
 					</view>
 					<view class="title">
-						<view class="name">
-							指北针量化交易：第{{quantInfo.joined_days}}天
+						<view class="name" style="font-weight: 600;color:black">
+							指北针量化交易第{{quantInfo.joined_days}}天
 						</view>
 					</view>
 					<view class="info-name">
@@ -66,7 +66,7 @@
 						<view v-if="swapInfo.currlist.length" class="detail-list">
 							<view class="detail-list-item" v-for="(item,index) in swapInfo.currlist" :key="index"
 								@click="todetail(item)">
-								<view class="detail-info">
+								<view class="">
 									<view class="title">
 										<view class="name">
 											{{item.name}}
@@ -118,7 +118,7 @@
 						<view v-if="swapInfo.recolist.length" class="detail-list">
 							<view class="detail-list-item" v-for="(item,index) in swapInfo.recolist" :key="index"
 								@click="todetail(item)">
-								<view class="detail-info">
+								<view class="">
 									<view class="title">
 										<view class="name">
 											{{item.name}}
@@ -175,7 +175,7 @@
 						<view v-if="swapInfo.histlist.length" class="detail-list">
 							<view class="detail-list-item" v-for="(item,index) in swapInfo.histlist" :key="index"
 								@click="todetail(item)">
-								<view class="detail-info">
+								<view class="">
 									<view class="title">
 										<view class="name">
 											{{item.name}}
@@ -241,7 +241,7 @@
 						<view v-if="spotInfo.currlist.length" class="detail-list">
 							<view class="detail-list-item" v-for="(item,index) in spotInfo.histlist" :key="index"
 								@click="todetail(item)">
-								<view class="detail-info">
+								<view class="">
 									<view class="title">
 										<view class="name">
 											{{item.name}}
@@ -371,9 +371,7 @@
 													{{index+1}}
 												</view>
 											</view>
-											<view class="avatar">
-												
-											</view>
+											<img class="avatar" :src="host + item.user.avatar" mode=""></img>
 											<view class="name">
 												{{item.name}}
 											</view>
@@ -440,9 +438,7 @@
 													<image class="ico" src="https://wp.lhtools.live/view.php/7ce8b16bc4e973479ef65535fd1b9996.png" mode=""></image>
 												</view>
 											</view>
-											<view class="avatar">
-												
-											</view>
+											<img class="avatar" :src="host + item.user.avatar" mode=""></img>
 											<view class="name">
 												{{item.name}}
 											</view>
@@ -914,7 +910,10 @@
 			padding: 24rpx;
 			box-sizing: border-box;
 			background-color: #ffffff;
-
+			.title{
+				margin-top: 10px;
+				color: grey ;
+			}
 			.tips {
 				display: flex;
 				align-items: center;
@@ -928,6 +927,7 @@
 				display: flex;
 				flex-direction: column;
 				height: 105rpx;
+				margin-top: 10px;
 				margin-bottom: 24rpx;
 				line-height: 35rpx;
 				.info-item{

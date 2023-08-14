@@ -1,6 +1,6 @@
 <template>
 	<view class="box">
-		<uni-nav-bar left-icon="left" right-text="记录" title="邀请有奖" @clickLeft='back' @clickRight='con' />
+		<!-- <uni-nav-bar left-icon="left" right-text="记录" title="邀请有奖" @clickLeft='back' @clickRight='con' /> -->
 		
 		<view class="con">
 			<view class="content">
