@@ -3,7 +3,7 @@
 		<my-nav-bar-search-home v-if="update" :msg-num="value"></my-nav-bar-search-home>
 		<view class="content">
 			<view class="card-head">
-				<uni-notice-bar  :speed="30" @getmore="getMore" :showGetMore="true" backgroundColor="#FFFFFF" color="#000000"
+				<uni-notice-bar  :speed="20" @getmore="getMore" :showGetMore="true" backgroundColor="#FFFFFF" color="#000000"
 					moreColor="#000000" :showIcon="true" :scrollable="true" :text="noticeText"></uni-notice-bar>
 			</view>
 			<view class="banner">
@@ -170,6 +170,14 @@
 			this.$nextTick(() => {
 			    this.update = true
 			})
+		},
+		onPullDownRefresh() {
+			console.log('refresh');
+			setTimeout(()=> {
+				this.init()
+				this.getMessage()
+				uni.stopPullDownRefresh();
+			}, 1000);
 		},
 		created() {
 			uni.showLoading()

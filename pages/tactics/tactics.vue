@@ -1,6 +1,5 @@
 <template>
 	<view class="content">
-		<view style="height: 28px;"></view>
 		<zb-tab :activeStyle="{
 		    fontWeight: 'bold',
 			color:'orange',
@@ -27,7 +26,7 @@
 					</view>
 					<view class="title">
 						<view class="name">
-							指北针量化交易第{{quantInfo.joined_days}}天
+							指北针量化交易：第{{quantInfo.joined_days}}天
 						</view>
 					</view>
 					<view class="info-name">
@@ -41,19 +40,19 @@
 						</view>
 					</view>
 				</view>
-				<view class="tab">
+<!-- 				<view class="tab">
 					<zb-tab :activeStyle="{
 					    fontWeight: 'bold',
 						color:'orange',
 					    transform: 'scale(1)'
 					    }" lineColor="orange" :data="minlist" v-model="minindex" @change="minpChange"></zb-tab>
-				</view>
-				<view class="select-card" v-if="minindex==0">
+				</view> -->
+<!-- 				<view class="select-card" v-if="minindex==0">
 					<view class="select-item" :class="[curselectId==item.id? 'select-item-active':'']"
 						v-for="(item,index) in selectlist" :key="index" @click="selecttype(item)">
 						<text>{{item.text}}</text>
 					</view>
-				</view>
+				</view> -->
 			</view>
 			<view v-else>
 				<!-- 合约 -->
@@ -432,16 +431,13 @@
 										<view class="one">
 											<view class="bg-av">
 												<view v-if="index==0">
-													<image src="https://wp.lhtools.live/view.php/dd41690f0a91c59520287b9141163a7f.png" mode=""></image>
+													<image class="ico" src="https://wp.lhtools.live/view.php/dd41690f0a91c59520287b9141163a7f.png" mode=""></image>
 												</view>
 												<view v-if="index==1">
-													<image src="https://wp.lhtools.live/view.php/2dc65e41aeb5acc77db71732a90591ac.png" mode=""></image>
+													<image class="ico" src="https://wp.lhtools.live/view.php/2dc65e41aeb5acc77db71732a90591ac.png" mode=""></image>
 												</view>
 												<view v-if="index==2">
-													<image src="https://wp.lhtools.live/view.php/7ce8b16bc4e973479ef65535fd1b9996.png" mode=""></image>
-												</view>
-												<view class="notico" v-else>
-													{{index+1}}
+													<image class="ico" src="https://wp.lhtools.live/view.php/7ce8b16bc4e973479ef65535fd1b9996.png" mode=""></image>
 												</view>
 											</view>
 											<view class="avatar">
@@ -890,8 +886,8 @@
 			box-sizing: border-box;
 
 			.avatar {
-				width: 104rpx;
-				height: 104rpx;
+				width: 80rpx;
+				height: 80rpx;
 				border-radius: 50%;
 				border: 1px solid orange;
 			}
@@ -931,7 +927,7 @@
 			.info-name {
 				display: flex;
 				flex-direction: column;
-				height: 135rpx;
+				height: 105rpx;
 				margin-bottom: 24rpx;
 				line-height: 35rpx;
 				.info-item{
@@ -940,7 +936,7 @@
 					margin-top: 15rpx;
 					.text-lable{
 						color: #b9adb1;
-						width: 20%;
+						width: 100px;
 					}
 					.text-data{
 						font-weight: 550;

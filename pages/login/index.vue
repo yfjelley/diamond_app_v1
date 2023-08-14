@@ -43,7 +43,6 @@
 			<view class="dlbutton" hover-class="dlbutton-hover" @click="buttonlogin">
 				<text>登录</text>
 			</view>
-
 		</view>
 	</view>
 </template>
@@ -91,8 +90,15 @@
 				let res=await getUserInfo()
 				this.userinfo=res.data
 				setStorageSync('userinfo', this.userinfo)
+				this.buttonlogin2()
+			},
+			buttonlogin2(){
+				uni.reLaunch({
+					url: '/pages/home/index'
+				})
 			},
 			buttonlogin() {
+
 				let req = {
 					username: this.phoneno,
 					password: this.password
@@ -119,8 +125,6 @@
 					setStorageSync('phone', this.phoneno)
 					setStorageSync('password', this.password)
 					this.getInfo();
-					uni.navigateBack();
-
 				})
 
 

@@ -1,7 +1,7 @@
 <template>
   <view class="my-avatar" :class="[{mini: size === 'mini', border: memberInfo.id > 0}]">
 
-  	<image class="my-avatar-text" v-if="memberInfo.avatar" :src="host+memberInfo.avatar" mode="widthFix"></image>
+  	<image class="my-avatar-text" v-if="memberInfo" :src="host+memberInfo.avatar" mode="widthFix"></image>
     <uni-icons v-else custom-prefix="custom-icon" type="contact" color="#717C8A" :size="size === 'mini' ? 43 : 70"></uni-icons>
   </view>
 </template>
@@ -18,7 +18,7 @@ export default {
         nickname: "",
 		avatar: '',
 		host: HOST
-      }
+      },
     },
 	host: {
 		type: String,

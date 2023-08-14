@@ -9,7 +9,8 @@
 				"app-plus": {
 					"titleNView": false,
 					"background": "#191E29"
-				}
+				},
+				"enablePullDownRefresh": true
 			}
 		},
 		{
@@ -118,13 +119,13 @@
 		},
 		{
 			"path": "pages/wallet/index",
+			"navigationStyle": "custom",
 			"style": {
-				// "navigationBarTitleText": "%common.title%",
-				"navigationStyle": "custom",
+				"navigationBarTitleText": "资产",
 				"app-plus": {
-					"titleNView": false,
+					"titleNView": true,
 					"background": "#191E29"
-				}
+				} 
 			}
 		},
 		{
@@ -244,13 +245,16 @@
         }
         ,{
             "path" : "pages/tactics/tactics",
+			"navigationStyle": "custom",
             "style" :                                                                                    
             {
-				"navigationStyle": "custom",
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "量化",
                 "enablePullDownRefresh": false
-            }
-            
+            },
+			"app-plus": {
+				"titleNView": true,
+				"background": "#191E29"
+			} 
         }
         ,{
             "path" : "pages/addtactics/addtactics",
@@ -302,20 +306,20 @@
         }
         ,{
             "path" : "pages/spotacc/spotacc",
+			"navigationStyle": "custom",
             "style" :                                                                                    
             {
-                // "navigationBarTitleText": "现货账户",
-				"navigationStyle": "custom",
+                "navigationBarTitleText": "资金账户",
                 "enablePullDownRefresh": false
             }
             
         }
         ,{
             "path" : "pages/spotamount/spotamount",
+			"navigationStyle": "custom",
             "style" :                                                                                    
             {
-				"navigationStyle": "custom",
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "现货账户",
                 "enablePullDownRefresh": false
             }
             
@@ -351,13 +355,15 @@
         }
         ,{
             "path" : "pages/tuto/tuto",
+			"navigationStyle": "custom",
             "style" :                                                                                    
             {
-				"navigationStyle": "custom",
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "教程",
                 "enablePullDownRefresh": false
-            }
-            
+            },
+			"app-plus": {
+				"background": "#191E29"
+			}			
         }
         ,{
             "path" : "pages/selectCoin/selectCoin",

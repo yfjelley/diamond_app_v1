@@ -1,11 +1,11 @@
 <template>
 	<view class="container">
-		<view class="navlist">
+<!-- 		<view class="navlist">
 			<view class="item" :class="[cur==item.id? 'active':'']" v-for="(item,index) in navlist" :key="index"
 				@click="to(item)">
 				{{item.text}}
 			</view>
-		</view>
+		</view> -->
 		<view class="chnav">
 			<view class="navlist">
 				<view class="item chtext" :class="[chcur==index? 'active':'']" v-for="(item,index) in chnavlist"
@@ -110,7 +110,6 @@
 <style lang="scss">
 	.container {
 		height: 100vh;
-		background-color: #f3f3f3;
 
 		.navlist {
 			display: flex;

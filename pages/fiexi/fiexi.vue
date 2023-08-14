@@ -118,7 +118,7 @@
 			uni.showLoading()
 			let token = uni.getStorageSync('token')
 			if (!token) {
-				uni.reLaunch({
+				uni.navigateTo({
 					url: '/pages/login/index'
 				})
 			}

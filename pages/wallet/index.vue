@@ -185,8 +185,8 @@
 		}
 		.box{
 			width: 100%;
-			height: 475rpx;
-			padding: 18rpx 12rpx;
+			// height: 475rpx;
+			padding: 40rpx 12rpx;
 			box-sizing: border-box;
 			background-color: #fff;
 			margin-bottom: 24rpx;
@@ -279,9 +279,11 @@
 					align-items: center;
 					flex-direction: column;
 					background-color: #fff3e4;
-					padding: 8rpx 0;
+					padding: 12rpx 0;
 					color: orange;
 					font-size: 30rpx;
+					border-radius: 10px;
+					font-weight: 600;
 					image{
 						width: 60rpx;
 						height: 60rpx;

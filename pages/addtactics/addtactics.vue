@@ -273,6 +273,7 @@
 						<text>USDT</text>
 					</view>
 				</view>
+				<view style="height: 120px;"></view>
 			</view>
 		</view>
 
