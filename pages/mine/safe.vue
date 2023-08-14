@@ -8,16 +8,16 @@
 		<!-- <uv-cell title="谷歌验证" :isLink="true" @click="togogle"></uv-cell> -->
 		<uv-cell title="修改密码" @click="setPassword"></uv-cell>
 		<!-- <uv-cell title="面容解锁/指纹解锁" :isLink="true" @click="tounlock"></uv-cell> -->
-		<uv-cell>
-			<template v-slot:title>
+		<!-- <uv-cell> -->
+<!-- 			<template v-slot:title>
 				<text>面容解锁/指纹解锁</text>
-			</template>
+			</template> -->
 			<!-- 自定义右侧值 -->
-			<template v-slot:value>
+<!-- 			<template v-slot:value>
 				<evan-switch active-color='orange' v-model="checked"></evan-switch>
-			</template>
-		</uv-cell>
-		<uv-cell title="自动锁定" :isLink="true" value='30分钟' @click="setlock"></uv-cell>
+			</template> -->
+		<!-- </uv-cell> -->
+		<!-- <uv-cell title="自动锁定" :isLink="true" value='30分钟' @click="setlock"></uv-cell> -->
 		<uv-cell title="注销账号" :isLink="true" @click="logout"></uv-cell>
 	</view>
 </template>
