@@ -125,6 +125,7 @@
 										</view>
 										<text class="share" @click.stop="toshare(item)">分享</text>
 									</view>
+
 									<view class="tips">
 										<text class="red">{{item.market_type}}</text>
 										<text class="orange">{{item.strategy_type}}</text>
@@ -373,7 +374,12 @@
 											</view>
 											<img class="avatar" :src="host + item.user.avatar" mode=""></img>
 											<view class="name">
-												{{item.name}}
+												{{item.user.nickname}}
+											</view>
+											<view class="title">
+												<view class="name">
+													{{item.name}}
+												</view>
 											</view>
 										</view>
 										<text class="grid">合约网格</text>
