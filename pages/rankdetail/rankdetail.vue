@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<uv-cell :title="detail.name" is-link value="查看主页" @click="todetail"></uv-cell>
+		<uv-cell :title="detail.user.nickname" is-link value="查看主页" @click="todetail"></uv-cell>
 		<view class="detail-info">
 			<view class="title">
 				<view class="name">
