@@ -228,7 +228,7 @@
 		},{
 			"path": "pages/mine/msgdetail",
 			"style": {
-				"navigationBarTitleText": "系统公告",
+				"navigationBarTitleText": "消息中心",
 				"app-plus": {
 					"background": "#191E29"
 				}
