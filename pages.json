@@ -131,8 +131,9 @@
 		{
 			"path": "pages/mine/mine",
 			"style": {
-				"navigationBarTitleText": "%common.title%",
-				"navigationStyle": "custom",
+//				"navigationBarTitleText": "%common.title%",
+				"navigationBarTitleText": "用户中心",
+//				"navigationStyle": "custom",
 				"app-plus": {
 					"background": "#11151F"
 				}
@@ -180,7 +181,7 @@
 			"path": "pages/mine/invited",
 			"style": {
 				"navigationBarTitleText": "邀请有奖",
-				"navigationStyle": "",
+//				"navigationStyle": "",
 				"app-plus": {
 					"background": "#191E29"
 				}
