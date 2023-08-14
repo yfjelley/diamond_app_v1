@@ -75,7 +75,7 @@
 									</view>
 									<view class="tips">
 										<text class="red">{{item.market_type}}</text>
-										<text class="orange">网格交易</text>
+										<text class="orange">{{item.strategy_type}}</text>
 										<text class="ccc">{{item.status=='STARTED'? '执行中':'手动停止'}}</text>
 									</view>
 									<view class="info-name">
@@ -127,7 +127,7 @@
 									</view>
 									<view class="tips">
 										<text class="red">{{item.market_type}}</text>
-										<text class="orange">网格交易</text>
+										<text class="orange">{{item.strategy_type}}</text>
 										<text class="ccc">{{item.status=='STARTED'? '执行中':'手动停止'}}</text>
 									</view>
 									<view class="info-name">
@@ -184,7 +184,7 @@
 									</view>
 									<view class="tips">
 										<text class="red">{{item.market_type}}</text>
-										<text class="orange">网格交易</text>
+										<text class="orange">{{item.strategy_type}}</text>
 										<text class="ccc">{{item.status=='STARTED'? '执行中':'手动停止'}}</text>
 									</view>
 									<view class="info-name">
@@ -250,7 +250,7 @@
 									</view>
 									<view class="tips">
 										<text class="red">{{item.market_type}}</text>
-										<text class="orange">网格交易</text>
+										<text class="orange">{{item.strategy_type}}</text>
 										<text class="ccc">{{item.status=='STARTED'? '执行中':'手动停止'}}</text>
 									</view>
 									<view class="info-name">
@@ -302,7 +302,7 @@
 									</view>
 									<view class="tips">
 										<text class="red">{{item.market_type}}</text>
-										<text class="orange">网格交易</text>
+										<text class="orange">{{item.strategy_type}}</text>
 										<text class="ccc">{{item.status=='STARTED'? '执行中':'手动停止'}}</text>
 									</view>
 									<view class="info-name">
@@ -380,7 +380,7 @@
 									</view>
 									<view class="tips">
 										<text class="red">{{item.market_type}}</text>
-										<text class="orange">网格交易</text>
+										<text class="orange">{{item.strategy_type}}</text>
 										<text class="ccc">{{item.status=='STARTED'? '执行中':'手动停止'}}</text>
 									</view>
 									<view class="info-name">
@@ -447,7 +447,7 @@
 									</view>
 									<view class="tips">
 										<text class="red">{{item.market_type}}</text>
-										<text class="orange">网格交易</text>
+										<text class="orange">{{item.strategy_type}}</text>
 										<text class="ccc">{{item.status=='STARTED'? '执行中':'手动停止'}}</text>
 									</view>
 									<view class="info-name">
