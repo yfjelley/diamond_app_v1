@@ -1,8 +1,8 @@
 <template>
 	<view class="content">
 		<view class="head-info">
-			<image class="avatar" src="host+memberInfo.avatar" mode=""></image>
-			<text class="name">{{detail.name}}</text>
+			<image class="avatar" :src="host+detail.user.avatar" mode=""></image>
+			<text class="name">{{detail.user.nickname}}</text>
 <!-- 			<view class="tip">
 				<text>加关注</text>
 			</view> -->
