@@ -1,31 +1,31 @@
 <template>
 	<view class="content">
 		<view class="head-info">
-			<image class="avatar" src="" mode=""></image>
+			<image class="avatar" src="host+memberInfo.avatar" mode=""></image>
 			<text class="name">{{detail.name}}</text>
-			<view class="tip">
+<!-- 			<view class="tip">
 				<text>加关注</text>
-			</view>
+			</view> -->
 		</view>
 		<view class="detail-info">
 			<view class="title">
 				<view class="name">
-					<text>{{limitWords(userinfo.bio)||'这个用户很懒，什么都没有写'}}</text>
+					<text>{{ userinfo && limitWords(userinfo.bio) || '这个用户很懒，什么都没有写' }}</text>
 				</view>
 			</view>
 			<view class="info-name">
 				<view>
-					<text>金果子量化交易第{{userinfo.joined_days}}天</text>
+					<text>金果子量化交易第{{userinfo && userinfo.joined_days}}天</text>
 				</view>
 			</view>
 			<view class="nav-info">
 				<view class="info-item">
 					<text>历史策略数</text>
-					<text style="font-weight: bold;">{{userinfo.total_strategy_count}}</text>
+					<text style="font-weight: bold;">{{userinfo && userinfo.total_strategy_count}}</text>
 				</view>
 				<view class="info-item">
 					<text>历史盈利策略数</text>
-					<text style="font-weight: bold;">{{userinfo.profitable_strategy_count}}</text>
+					<text style="font-weight: bold;">{{userinfo && userinfo.profitable_strategy_count}}</text>
 				</view>
 			</view>
 		</view>
