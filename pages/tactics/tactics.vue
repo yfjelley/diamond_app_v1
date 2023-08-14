@@ -66,7 +66,7 @@
 						<view v-if="swapInfo.currlist.length" class="detail-list">
 							<view class="detail-list-item" v-for="(item,index) in swapInfo.currlist" :key="index"
 								@click="todetail(item)">
-								<view class="">
+								<view class="detail-info">
 									<view class="title">
 										<view class="name">
 											{{item.name}}
@@ -118,7 +118,7 @@
 						<view v-if="swapInfo.recolist.length" class="detail-list">
 							<view class="detail-list-item" v-for="(item,index) in swapInfo.recolist" :key="index"
 								@click="todetail(item)">
-								<view class="">
+								<view class="detail-info">
 									<view class="title">
 										<view class="name">
 											{{item.name}}
@@ -176,7 +176,7 @@
 						<view v-if="swapInfo.histlist.length" class="detail-list">
 							<view class="detail-list-item" v-for="(item,index) in swapInfo.histlist" :key="index"
 								@click="todetail(item)">
-								<view class="">
+								<view class="detail-info">
 									<view class="title">
 										<view class="name">
 											{{item.name}}
@@ -242,7 +242,7 @@
 						<view v-if="spotInfo.currlist.length" class="detail-list">
 							<view class="detail-list-item" v-for="(item,index) in spotInfo.histlist" :key="index"
 								@click="todetail(item)">
-								<view class="">
+								<view class="detail-info">
 									<view class="title">
 										<view class="name">
 											{{item.name}}
