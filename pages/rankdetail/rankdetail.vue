@@ -65,7 +65,7 @@
 				</view> -->
 			</view>
 		</view>
-		<view class="tab">
+<!-- 		<view class="tab">
 			<zb-tab :activeStyle="{
 			    fontWeight: 'bold',
 				color:'orange',
@@ -76,7 +76,7 @@
 			<view class="btn" @click="add">
 				复制参数
 			</view>
-		</view>
+		</view> -->
 	</view>
 </template>
 
