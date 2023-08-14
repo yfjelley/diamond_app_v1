@@ -376,7 +376,7 @@
 											<view class="name">
 												{{item.user.nickname}}
 											</view>
-											<view class="title">
+											<view class="strategy_name">
 												<view class="name">
 													{{item.name}}
 												</view>
@@ -448,7 +448,7 @@
 											<view class="name">
 												{{item.user.nickname}}
 											</view>
-											<view class="title">
+											<view class="strategy_name">
 												<view class="name">
 													{{item.name}}
 												</view>
@@ -902,6 +902,7 @@
 			.name {
 				margin-left: 24rpx;
 				font-size: 28rpx;
+				white-space: pre-wrap; // 添加这一行来实现换行显示
 			}
 
 			.tip {
