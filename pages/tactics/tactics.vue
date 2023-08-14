@@ -446,7 +446,12 @@
 											</view>
 											<img class="avatar" :src="host + item.user.avatar" mode=""></img>
 											<view class="name">
-												{{item.name}}
+												{{item.user.nickname}}
+											</view>
+											<view class="title">
+												<view class="name">
+													{{item.name}}
+												</view>
 											</view>
 										</view>
 										<text class="grid">合约网格</text>
