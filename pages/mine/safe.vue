@@ -5,7 +5,7 @@
 		<uv-cell title="手机号码" :isLink="true" @click="tophone"></uv-cell>
 		<uv-cell title="邮箱验证" :isLink="true" @click="toemail"></uv-cell>
 		<uv-cell title="绑定API" :isLink="true" @click="toapi"></uv-cell>
-		<uv-cell title="谷歌验证" :isLink="true" @click="togogle"></uv-cell>
+		<!-- <uv-cell title="谷歌验证" :isLink="true" @click="togogle"></uv-cell> -->
 		<uv-cell title="修改密码" @click="setPassword"></uv-cell>
 		<!-- <uv-cell title="面容解锁/指纹解锁" :isLink="true" @click="tounlock"></uv-cell> -->
 		<uv-cell>
