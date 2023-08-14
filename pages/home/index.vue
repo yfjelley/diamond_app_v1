@@ -4,7 +4,7 @@
 		<view class="content">
 			<view class="card-head">
 				<uni-notice-bar  :speed="20" @getmore="getMore" :showGetMore="true" backgroundColor="#FFFFFF" color="#000000"
-					moreColor="#000000" :showIcon="true" :scrollable="true" :text="noticeText"></uni-notice-bar>
+					moreColor="#000000" :showIcon="true" :scrollable="true" :text="noticeText" @click="godetail"></uni-notice-bar>
 			</view>
 			<view class="banner">
 				<uni-swiper-dot :info="adList" :current="adCurrent" field="content" :mode="adMode"
@@ -100,6 +100,7 @@
 				btc_usdt_price: '',
 				eth_usdt_price: '',
 				riseList: [],
+				noticeinfo:[],
 				adList: [
 					    require('../../static/banner/001.jpg'),
 					    require('../../static/banner/002.jpg'),
@@ -196,9 +197,15 @@
 			this.$store.state.ws.send(subscribeMessage);			
 		},
 		methods: {
+			godetail(){
+				uni.navigateTo({
+					url:`/pages/mine/msgdetail?detail=${JSON.stringify(this.noticeinfo)}`
+				})
+			},
 			getMessage(){
 				getAppinfo().then(res=>{
 					const msg=res.data.results
+					this.noticeinfo = res.data.results[0]
 					this.noticeList.push(msg[0].title)
 					this.noticeList.push(msg[0].content)
 				})
