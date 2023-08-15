@@ -35,8 +35,9 @@
 
 
 
-			<view class="forgot" @click="forgot">
-				<text>忘记密码</text>
+			<view class="forgot">
+				<text @click="register">注册</text>
+				<text @click="forgot">忘记密码</text>
 			</view>
 
 
@@ -201,10 +202,10 @@
 	.forgot {
 		margin-top: 20px;
 		display: flex;
-		flex-direction: row;
-		justify-content: flex-end;
+		justify-content: space-between;
 		align-items: center;
-		margin-right: 65rpx;
+		padding: 0 36px;
+		// margin-right: 65rpx;
 	}
 
 	.header {

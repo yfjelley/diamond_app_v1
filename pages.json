@@ -17,7 +17,7 @@
 			"path": "pages/login/index",
 			"style": {
 				"navigationBarTitleText": "登录",
-				"navigationStyle": "custom",
+				// "navigationStyle": "custom",
 				"app-plus": {
 					"titleNView": true,
 					"background": "#191E29"
@@ -39,7 +39,7 @@
 			"path": "pages/login/register",
 			"style": {
 				"navigationBarTitleText": "注册",
-				"navigationStyle": "custom",
+				// "navigationStyle": "custom",
 				"app-plus": {
 					"titleNView": true,
 					"background": "#191E29"

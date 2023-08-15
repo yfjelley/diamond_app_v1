@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-nav-bar left-icon="left" right-text="登录" @clickLeft='back' color="orange" @clickRight='login' />
+		<!-- <uni-nav-bar left-icon="left" right-text="登录" @clickLeft='back' color="orange" @clickRight='login' /> -->
 		<view class="content">
 		
 			<view class="header">
